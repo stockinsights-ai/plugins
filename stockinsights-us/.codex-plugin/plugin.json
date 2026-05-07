@@ -20,6 +20,7 @@
     "financial-data",
     "mcp"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "StockInsights US",
