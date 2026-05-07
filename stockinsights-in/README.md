@@ -16,7 +16,13 @@ The plugin currently points to:
 https://stockinsights-ai-feat-mcp-f1f2f2b.zuplo.app/mcp
 ```
 
-Set `STOCKINSIGHTS_AI_IN_API_KEY` in the Codex runtime environment. Update [`.mcp.json`](./.mcp.json) if the production MCP server is deployed at a different URL.
+Before running queries with this plugin, check [`.mcp.json`](./.mcp.json) for the `bearer_token_env_var` value and set that environment variable in the Codex runtime environment:
+
+```bash
+export STOCKINSIGHTS_AI_IN_API_KEY="..."
+```
+
+Update [`.mcp.json`](./.mcp.json) if the production MCP server is deployed at a different URL.
 
 ## Example Prompts
 
