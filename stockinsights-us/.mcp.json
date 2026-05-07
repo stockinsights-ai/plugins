@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "stockinsights-us": {
+      "type": "http",
+      "url": "https://mcp.stockinsights.ai/us/mcp",
+      "note": "StockInsights.ai US MCP server. Provides access to US public-company filings search, semantic search, company documents, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
+    }
+  }
+}

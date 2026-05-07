@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "stockinsights-in": {
+      "type": "http",
+      "url": "https://mcp.stockinsights.ai/in/mcp",
+      "note": "StockInsights.ai India MCP server. Provides access to Indian public-company filings search, semantic search, corporate announcements, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
+    }
+  }
+}

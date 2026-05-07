@@ -1,0 +1,47 @@
+{
+  "name": "stockinsights-us",
+  "version": "0.1.0",
+  "description": "StockInsights.ai US equity research plugin with MCP access to SEC filings, company documents, and search tools.",
+  "author": {
+    "name": "StockInsights.ai",
+    "email": "team@stockinsights.ai",
+    "url": "https://www.stockinsights.ai"
+  },
+  "homepage": "https://www.stockinsights.ai",
+  "repository": "https://github.com/stockinsights-ai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "stockinsights",
+    "equity-research",
+    "us",
+    "sec",
+    "filings",
+    "earnings",
+    "financial-data",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "StockInsights US",
+    "shortDescription": "US equity research with StockInsights MCP",
+    "longDescription": "Bring StockInsights.ai US data into Codex with MCP access to US public-company filings, company documents, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
+    "developerName": "StockInsights.ai",
+    "category": "Research",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://www.stockinsights.ai",
+    "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
+    "termsOfServiceURL": "https://www.stockinsights.ai/terms",
+    "defaultPrompt": [
+      "Research AAPL using StockInsights US MCP",
+      "Search MSFT filings for AI capex",
+      "Summarize recent NVDA filings"
+    ],
+    "brandColor": "#0F766E",
+    "composerIcon": "./assets/stockinsights-small.svg",
+    "logo": "./assets/stockinsights.png",
+    "screenshots": []
+  }
+}
