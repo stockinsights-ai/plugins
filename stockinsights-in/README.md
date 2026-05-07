@@ -13,10 +13,10 @@ This plugin follows the same shape as the Cloudflare plugin example: a Codex man
 The plugin currently points to:
 
 ```text
-https://mcp.stockinsights.ai/in/mcp
+https://stockinsights-ai-feat-mcp-f1f2f2b.zuplo.app/mcp
 ```
 
-Update [`.mcp.json`](./.mcp.json) if the production MCP server is deployed at a different URL.
+Set `STOCKINSIGHTS_AI_IN_API_KEY` in the Codex runtime environment. Update [`.mcp.json`](./.mcp.json) if the production MCP server is deployed at a different URL.
 
 ## Example Prompts
 
