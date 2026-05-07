@@ -25,7 +25,7 @@ If the MCP server is unavailable, tell the user to verify `.mcp.json`, set `STOC
 
 ## Step 3: Verify MCP Connection
 
-Run a quick test by calling the India MCP tool `get_announcement_feed` with a well-known ticker such as `TCS`.
+Run a quick test by calling the India MCP tool `get_announcement_feed`.
 
 Show the user whether the tool returned data. If it returns data, tell them setup is working. If it fails, report the error and suggest checking:
 

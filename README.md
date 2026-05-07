@@ -34,28 +34,23 @@ export STOCKINSIGHTS_AI_IN_API_KEY="..."
 export STOCKINSIGHTS_AI_US_API_KEY="..."
 ```
 
-Check these files before running queries:
-
-- [stockinsights-in/.mcp.json](./stockinsights-in/.mcp.json)
-- [stockinsights-us/.mcp.json](./stockinsights-us/.mcp.json)
-
 ## Getting Started
 
 Ask Codex to run the setup check for the region you installed:
 
 ```text
-Run StockInsights India setup
-Run StockInsights US setup
+Run /StockInsights India setup
+Run /StockInsights US setup
 ```
 
 The setup skill verifies Codex is running, checks the MCP configuration, confirms the expected API key environment variable, and tests the announcements feed tool.
 
 ## Plugins
 
-| Plugin | Region | MCP test tool | Example |
-|--------|--------|---------------|---------|
-| `stockinsights-in` | India | `get_announcement_feed` | Research TCS using StockInsights India MCP |
-| `stockinsights-us` | US | `get_announcements_feed` | Research AAPL using StockInsights US MCP |
+| Plugin             | Region | MCP test tool            | Example                                    |
+| ------------------ | ------ | ------------------------ | ------------------------------------------ |
+| `stockinsights-in` | India  | `get_announcement_feed`  | Research TCS using StockInsights India MCP |
+| `stockinsights-us` | US     | `get_announcements_feed` | Research AAPL using StockInsights US MCP   |
 
 ## Data Sources
 
