@@ -1,11 +1,11 @@
 ---
 name: setup
-description: Verify the StockInsights US MCP connection and API key setup before running US equity research queries.
+description: Verify the stockinsights.ai US MCP connection and API key setup before running US equity research queries.
 ---
 
-# StockInsights US Setup
+# stockinsights.ai US Setup
 
-Walk the user through verifying their StockInsights US plugin setup. Be concise and practical.
+Walk the user through verifying their stockinsights.ai US plugin setup. Be concise and practical.
 
 ## Step 1: Verify Codex
 
@@ -13,7 +13,7 @@ Confirm Codex is running. If the user is seeing this skill, Codex is available.
 
 ## Step 2: Check MCP Configuration
 
-This plugin connects to the StockInsights US MCP server configured in `stockinsights-us/.mcp.json`.
+This plugin connects to the stockinsights.ai US MCP server configured in `stockinsights-us/.mcp.json`.
 
 Read `.mcp.json` if available and confirm:
 
@@ -37,6 +37,6 @@ Show the user whether the tool returned data. If it returns data, tell them setu
 
 Suggest one or two follow-up prompts:
 
-- Research AAPL using StockInsights US MCP.
+- Research AAPL using stockinsights.ai US MCP.
 - Search MSFT filings for AI capex.
 - Summarize recent NVDA filings.

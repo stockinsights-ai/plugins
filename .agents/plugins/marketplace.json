@@ -1,7 +1,7 @@
 {
   "name": "stockinsights-ai",
   "interface": {
-    "displayName": "StockInsights.ai"
+    "displayName": "stockinsights.ai"
   },
   "plugins": [
     {

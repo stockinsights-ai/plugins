@@ -1,11 +1,11 @@
-# StockInsights.ai Plugins for Codex
+# stockinsights.ai Plugins for Codex
 
-StockInsights.ai Codex plugins add MCP-powered equity research workflows for public companies. The marketplace includes separate plugins for India and US coverage so users can install only the region they need.
+stockinsights.ai Codex plugins add MCP-powered equity research workflows for public companies. The marketplace includes separate plugins for India and US coverage so users can install only the region they need.
 
 ## Prerequisites
 
 - **Codex** - Install or upgrade Codex before installing these plugins.
-- **StockInsights.ai account** - You need a StockInsights.ai API key for each region you use.
+- **stockinsights.ai account** - You need a stockinsights.ai API key for each region you use.
 
 ## Installation
 
@@ -39,8 +39,8 @@ export STOCKINSIGHTS_AI_US_API_KEY="..."
 Ask Codex to run the setup check for the region you installed:
 
 ```text
-Run /StockInsights India setup
-Run /StockInsights US setup
+Run /stockinsights.ai India setup
+Run /stockinsights.ai US setup
 ```
 
 The setup skill verifies Codex is running, checks the MCP configuration, confirms the expected API key environment variable, and tests the announcements feed tool.
@@ -49,12 +49,12 @@ The setup skill verifies Codex is running, checks the MCP configuration, confirm
 
 | Plugin             | Region | MCP test tool            | Example                                    |
 | ------------------ | ------ | ------------------------ | ------------------------------------------ |
-| `stockinsights-in` | India  | `get_announcement_feed`  | Research TCS using StockInsights India MCP |
-| `stockinsights-us` | US     | `get_announcements_feed` | Research AAPL using StockInsights US MCP   |
+| `stockinsights-in` | India  | `get_announcement_feed`  | Research TCS using stockinsights.ai India MCP |
+| `stockinsights-us` | US     | `get_announcements_feed` | Research AAPL using stockinsights.ai US MCP   |
 
 ## Data Sources
 
-- **StockInsights India MCP** - Indian company filings, corporate announcements, semantic search, keyword search, and AI insight summaries.
-- **StockInsights US MCP** - US company filings, company documents, semantic search, keyword search, and AI insight summaries.
+- **stockinsights.ai India MCP** - Indian company filings, corporate announcements, semantic search, keyword search, and AI insight summaries.
+- **stockinsights.ai US MCP** - US company filings, company documents, semantic search, keyword search, and AI insight summaries.
 
 Results are returned directly in the Codex conversation. Treat outputs as research material, not investment advice.

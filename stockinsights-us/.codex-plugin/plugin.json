@@ -1,9 +1,9 @@
 {
   "name": "stockinsights-us",
   "version": "0.1.0",
-  "description": "StockInsights.ai US equity research plugin with MCP access to SEC filings, company documents, and search tools.",
+  "description": "stockinsights.ai US equity research plugin with MCP access to SEC filings, company documents, and search tools.",
   "author": {
-    "name": "StockInsights.ai",
+    "name": "stockinsights.ai",
     "email": "team@stockinsights.ai",
     "url": "https://www.stockinsights.ai"
   },
@@ -23,10 +23,10 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "StockInsights US",
-    "shortDescription": "US equity research with StockInsights MCP",
-    "longDescription": "Bring StockInsights.ai US data into Codex with MCP access to US public-company filings, company documents, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
-    "developerName": "StockInsights.ai",
+    "displayName": "stockinsights.ai US",
+    "shortDescription": "US equity research with stockinsights.ai MCP",
+    "longDescription": "Bring stockinsights.ai US data into Codex with MCP access to US public-company filings, company documents, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
+    "developerName": "stockinsights.ai",
     "category": "Research",
     "capabilities": [
       "Interactive",
@@ -36,7 +36,7 @@
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
     "termsOfServiceURL": "https://www.stockinsights.ai/terms",
     "defaultPrompt": [
-      "Research AAPL using StockInsights US MCP",
+      "Research AAPL using stockinsights.ai US MCP",
       "Search MSFT filings for AI capex",
       "Summarize recent NVDA filings"
     ],

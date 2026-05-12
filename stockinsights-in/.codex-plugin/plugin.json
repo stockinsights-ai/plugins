@@ -1,9 +1,9 @@
 {
   "name": "stockinsights-in",
   "version": "0.1.0",
-  "description": "StockInsights.ai India equity research plugin with MCP access to Indian filings, announcements, and search tools.",
+  "description": "stockinsights.ai India equity research plugin with MCP access to Indian filings, announcements, and search tools.",
   "author": {
-    "name": "StockInsights.ai",
+    "name": "stockinsights.ai",
     "email": "team@stockinsights.ai",
     "url": "https://www.stockinsights.ai"
   },
@@ -23,10 +23,10 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "StockInsights India",
-    "shortDescription": "Indian equity research with StockInsights MCP",
-    "longDescription": "Bring StockInsights.ai India data into Codex with MCP access to Indian public-company filings, corporate announcements, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
-    "developerName": "StockInsights.ai",
+    "displayName": "stockinsights.ai India",
+    "shortDescription": "Indian equity research with stockinsights.ai MCP",
+    "longDescription": "Bring stockinsights.ai India data into Codex with MCP access to Indian public-company filings, corporate announcements, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
+    "developerName": "stockinsights.ai",
     "category": "Research",
     "capabilities": [
       "Interactive",
@@ -36,7 +36,7 @@
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
     "termsOfServiceURL": "https://www.stockinsights.ai/terms",
     "defaultPrompt": [
-      "Research TCS using StockInsights India MCP",
+      "Research TCS using stockinsights.ai India MCP",
       "Summarize recent INFY announcements",
       "Search HDFCBANK filings for credit growth"
     ],

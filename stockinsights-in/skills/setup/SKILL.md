@@ -1,11 +1,11 @@
 ---
 name: setup
-description: Verify the StockInsights India MCP connection and API key setup before running Indian equity research queries.
+description: Verify the stockinsights.ai India MCP connection and API key setup before running Indian equity research queries.
 ---
 
-# StockInsights India Setup
+# stockinsights.ai India Setup
 
-Walk the user through verifying their StockInsights India plugin setup. Be concise and practical.
+Walk the user through verifying their stockinsights.ai India plugin setup. Be concise and practical.
 
 ## Step 1: Verify Codex
 
@@ -13,7 +13,7 @@ Confirm Codex is running. If the user is seeing this skill, Codex is available.
 
 ## Step 2: Check MCP Configuration
 
-This plugin connects to the StockInsights India MCP server configured in `stockinsights-in/.mcp.json`.
+This plugin connects to the stockinsights.ai India MCP server configured in `stockinsights-in/.mcp.json`.
 
 Read `.mcp.json` if available and confirm:
 
@@ -37,6 +37,6 @@ Show the user whether the tool returned data. If it returns data, tell them setu
 
 Suggest one or two follow-up prompts:
 
-- Research TCS using StockInsights India MCP.
+- Research TCS using stockinsights.ai India MCP.
 - Summarize recent INFY corporate announcements.
 - Search HDFCBANK filings for credit growth commentary.

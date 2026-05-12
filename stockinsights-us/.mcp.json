@@ -3,7 +3,7 @@
     "stockinsights-us": {
       "url": "https://stockinsights-ai-us-feat-mcp-e21e62f.zuplo.app/mcp",
       "bearer_token_env_var": "STOCKINSIGHTS_AI_US_API_KEY",
-      "note": "StockInsights.ai US MCP server. Provides access to US public-company filings search, semantic search, company documents, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
+      "note": "stockinsights.ai US MCP server. Provides access to US public-company filings search, semantic search, company documents, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
     }
   }
 }
