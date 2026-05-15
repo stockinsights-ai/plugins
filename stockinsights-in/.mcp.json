@@ -1,9 +1,9 @@
 {
   "mcpServers": {
     "stockinsights-in": {
+      "type": "http",
       "url": "https://stockinsights-ai-feat-mcp-f1f2f2b.zuplo.app/mcp",
-      "bearer_token_env_var": "STOCKINSIGHTS_AI_IN_API_KEY",
-      "note": "stockinsights.ai India MCP server. Provides access to Indian public-company filings search, semantic search, corporate announcements, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
+      "note": "stockinsights.ai India MCP server. Uses OAuth on first connection. Provides access to Indian public-company filings search, semantic search, corporate announcements, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
     }
   }
 }

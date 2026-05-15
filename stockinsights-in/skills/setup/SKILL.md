@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Verify the stockinsights.ai India MCP connection and API key setup before running Indian equity research queries.
+description: Verify the stockinsights.ai India MCP connection and OAuth setup before running Indian equity research queries.
 ---
 
 # stockinsights.ai India Setup
@@ -18,20 +18,20 @@ This plugin connects to the stockinsights.ai India MCP server configured in `sto
 Read `.mcp.json` if available and confirm:
 
 - MCP server name: `stockinsights-in`
-- API key env var: `STOCKINSIGHTS_AI_IN_API_KEY`
+- Auth: OAuth on first connection
 - MCP URL: the `url` value in `.mcp.json`
 
-If the MCP server is unavailable, tell the user to verify `.mcp.json`, set `STOCKINSIGHTS_AI_IN_API_KEY`, and restart Codex after plugin installation.
+If the MCP server is unavailable, tell the user to verify `.mcp.json` and restart Codex after plugin installation.
 
 ## Step 3: Verify MCP Connection
 
 Run a quick test by calling the India MCP tool `get_announcement_feed`.
 
-Show the user whether the tool returned data. If it returns data, tell them setup is working. If it fails, report the error and suggest checking:
+Show the user whether the tool returned data. If OAuth is required, ask the user to complete the browser-based stockinsights.ai authorization flow. If it returns data, tell them setup is working. If it fails, report the error and suggest checking:
 
-- `STOCKINSIGHTS_AI_IN_API_KEY` is set in the Codex runtime environment
+- The stockinsights.ai OAuth flow completed successfully
 - The configured MCP URL is reachable
-- Codex has been restarted after plugin installation or env var changes
+- Codex has been restarted after plugin installation
 
 ## Step 4: Suggested First Queries
 
