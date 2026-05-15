@@ -1,0 +1,46 @@
+{
+  "name": "stockinsights-ai",
+  "owner": {
+    "name": "stockinsights.ai",
+    "email": "sahas@stockinsights.ai"
+  },
+  "description": "stockinsights.ai plugins for equity research in Claude Code.",
+  "plugins": [
+    {
+      "name": "stockinsights-in",
+      "source": "./stockinsights-in",
+      "description": "stockinsights.ai India equity research with MCP access to Indian filings, announcements, and search tools.",
+      "version": "0.1.0",
+      "author": {
+        "name": "stockinsights.ai",
+        "email": "sahas@stockinsights.ai"
+      },
+      "category": "Research",
+      "tags": [
+        "equity-research",
+        "india",
+        "filings",
+        "announcements",
+        "mcp"
+      ]
+    },
+    {
+      "name": "stockinsights-us",
+      "source": "./stockinsights-us",
+      "description": "stockinsights.ai US equity research with MCP access to SEC filings, company documents, and search tools.",
+      "version": "0.1.0",
+      "author": {
+        "name": "stockinsights.ai",
+        "email": "sahas@stockinsights.ai"
+      },
+      "category": "Research",
+      "tags": [
+        "equity-research",
+        "us",
+        "sec",
+        "filings",
+        "mcp"
+      ]
+    }
+  ]
+}

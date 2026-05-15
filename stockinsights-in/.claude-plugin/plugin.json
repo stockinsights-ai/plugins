@@ -1,0 +1,25 @@
+{
+  "name": "stockinsights-in",
+  "version": "0.1.0",
+  "description": "stockinsights.ai India equity research plugin with MCP access to Indian filings, announcements, and search tools.",
+  "author": {
+    "name": "stockinsights.ai",
+    "email": "sahas@stockinsights.ai",
+    "url": "https://www.stockinsights.ai"
+  },
+  "homepage": "https://www.stockinsights.ai",
+  "repository": "https://github.com/stockinsights-ai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "stockinsights",
+    "equity-research",
+    "india",
+    "indian-stocks",
+    "filings",
+    "announcements",
+    "financial-data",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

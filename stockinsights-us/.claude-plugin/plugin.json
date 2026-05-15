@@ -1,0 +1,25 @@
+{
+  "name": "stockinsights-us",
+  "version": "0.1.0",
+  "description": "stockinsights.ai US equity research plugin with MCP access to SEC filings, company documents, and search tools.",
+  "author": {
+    "name": "stockinsights.ai",
+    "email": "sahas@stockinsights.ai",
+    "url": "https://www.stockinsights.ai"
+  },
+  "homepage": "https://www.stockinsights.ai",
+  "repository": "https://github.com/stockinsights-ai/plugins",
+  "license": "MIT",
+  "keywords": [
+    "stockinsights",
+    "equity-research",
+    "us",
+    "sec",
+    "filings",
+    "earnings",
+    "financial-data",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}
