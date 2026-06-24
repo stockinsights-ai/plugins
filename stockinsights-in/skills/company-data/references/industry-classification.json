@@ -1,0 +1,1304 @@
+[
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Trading - Chemicals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": null
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Specialty Chemicals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Commodity Chemicals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Dyes And Pigments"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Explosives"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Carbon Black"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Industrial Gases"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Petrochemicals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Chemicals & Petrochemicals",
+    "industry_basic": "Printing Inks"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Fertilizers & Agrochemicals",
+    "industry_basic": "Pesticides & Agrochemicals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Chemicals",
+    "industry": "Fertilizers & Agrochemicals",
+    "industry_basic": "Fertilizers"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Construction Materials",
+    "industry": "Cement & Cement Products",
+    "industry_basic": "Cement & Cement Products"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Construction Materials",
+    "industry": "Other Construction Materials",
+    "industry_basic": "Other Construction Materials"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Forest Materials",
+    "industry": "Paper Forest & Jute Products",
+    "industry_basic": "Paper & Paper Products"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Forest Materials",
+    "industry": "Paper, Forest & Jute Products",
+    "industry_basic": "Jute & Jute Products"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Forest Materials",
+    "industry": "Paper, Forest & Jute Products",
+    "industry_basic": "Forest Products"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Forest Materials",
+    "industry": "Paper, Forest & Jute Products",
+    "industry_basic": "Paper & Paper Products"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Diversified Metals",
+    "industry_basic": "Diversified Metals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Ferrous Metals",
+    "industry_basic": "Sponge Iron"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Ferrous Metals",
+    "industry_basic": "Ferro & Silica Manganese"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Ferrous Metals",
+    "industry_basic": "Pig Iron"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Ferrous Metals",
+    "industry_basic": "Iron & Steel"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Metals & Minerals Trading",
+    "industry_basic": "Trading - Metals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Metals & Minerals Trading",
+    "industry_basic": "Trading - Minerals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Minerals & Mining",
+    "industry_basic": "Industrial Minerals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Non - Ferrous Metals",
+    "industry_basic": "Aluminium"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Non - Ferrous Metals",
+    "industry_basic": "Precious Metals"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Non - Ferrous Metals",
+    "industry_basic": "Zinc"
+  },
+  {
+    "industry_macro": "Commodities",
+    "industry_sector": "Metals & Mining",
+    "industry": "Non - Ferrous Metals",
+    "industry_basic": "Copper"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Auto Components",
+    "industry_basic": "Trading - Auto Components"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Auto Components",
+    "industry_basic": "Tyres & Rubber Products"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Auto Components",
+    "industry_basic": "Auto Components & Equipments"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Automobiles",
+    "industry_basic": "Passenger Cars & Utility Vehicles"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Automobiles",
+    "industry_basic": "Auto Dealer"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Automobiles",
+    "industry_basic": "2/3 Wheelers"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Automobile and Auto Components",
+    "industry": "Automobiles",
+    "industry_basic": "Auto -Dealer"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Gems Jewellery And Watches"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Household Appliances"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Leather And Leather Products"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Gems, Jewellery And Watches"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Paints"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Furniture Home Furnishing"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Footwear"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Cycles"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Houseware"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Diversified consumer products"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Ceramics"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Furniture, Home Furnishing"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Granites & Marbles"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Plastic Products - Consumer"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Plywood Boards/ Laminates"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Consumer Electronics"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Sanitary Ware"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Glass - Consumer"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Durables",
+    "industry": "Consumer Durables",
+    "industry_basic": "Leisure Products"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Tour Travel Related Services"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Wellness"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Tour, Travel Related Services"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Amusement Parks/ Other Recreation"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Restaurants"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Leisure Services",
+    "industry_basic": "Hotels & Resorts"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Other Consumer Services",
+    "industry_basic": "E-Learning"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Other Consumer Services",
+    "industry_basic": "Education"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Other Consumer Services",
+    "industry_basic": "Other Consumer Services"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Other Consumer Services",
+    "industry_basic": "Food Storage Facilities"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "Diversified Retail"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "Speciality Retail"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "E-Retail/ E-Commerce"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "Internet & Catalogue Retail"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "Pharmacy Retail"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Consumer Services",
+    "industry": "Retailing",
+    "industry_basic": "Distributors"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Media & Entertainment"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Film Production Distribution & Exhibition"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Digital Entertainment"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Print Media"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Advertising & Media Agencies"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Web based media and service"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media Entertainment & Publication",
+    "industry": "Printing & Publication",
+    "industry_basic": "Printing & Publication"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Digital Entertainment"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Media & Entertainment"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "TV Broadcasting & Software Production"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Entertainment",
+    "industry_basic": "Film Production, Distribution & Exhibition"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Print Media"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Electronic Media"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Web based media and service"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Media",
+    "industry_basic": "Advertising & Media Agencies"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Media, Entertainment & Publication",
+    "industry": "Printing & Publication",
+    "industry_basic": "Printing & Publication"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Realty",
+    "industry": "Realty",
+    "industry_basic": "Residential, Commercial Projects"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Realty",
+    "industry": "Realty",
+    "industry_basic": "Real Estate Investment Trusts (REITs)"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Realty",
+    "industry": "Realty",
+    "industry_basic": "Real Estate related services"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Realty",
+    "industry": "Realty",
+    "industry_basic": "Residential Commercial Projects"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Textiles",
+    "industry": "Textiles & Apparels",
+    "industry_basic": "Other Textile Products"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Textiles",
+    "industry": "Textiles & Apparels",
+    "industry_basic": "Garments & Apparels"
+  },
+  {
+    "industry_macro": "Consumer Discretionary",
+    "industry_sector": "Textiles",
+    "industry": "Textiles & Apparels",
+    "industry_basic": "Trading - Textile Products"
+  },
+  {
+    "industry_macro": "Diversified",
+    "industry_sector": "Diversified",
+    "industry": "Diversified",
+    "industry_basic": "Diversified"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil Gas & Consumable Fuels",
+    "industry": "Gas",
+    "industry_basic": "Gas Transmission/Marketing"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Offshore Support Solution Drilling"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Oil Equipment & Services"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil Gas & Consumable Fuels",
+    "industry": "Petroleum Products",
+    "industry_basic": "Refineries & Marketing"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil Gas & Consumable Fuels",
+    "industry": "Petroleum Products",
+    "industry_basic": "Lubricants"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Consumable Fuels",
+    "industry_basic": "Trading Coal"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Consumable Fuels",
+    "industry_basic": "Coal"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Gas",
+    "industry_basic": "Gas Transmission/Marketing"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Gas",
+    "industry_basic": "LPG/CNG/PNG/LNG Supplier"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Gas",
+    "industry_basic": "Trading - Gas"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Oil Storage & Transportation"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Oil Equipment & Services"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Oil Exploration & Production"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Oil",
+    "industry_basic": "Offshore Support Solution Drilling"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Petroleum Products",
+    "industry_basic": "Lubricants"
+  },
+  {
+    "industry_macro": "Energy",
+    "industry_sector": "Oil, Gas & Consumable Fuels",
+    "industry": "Petroleum Products",
+    "industry_basic": "Refineries & Marketing"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Agricultural Food & other Products",
+    "industry_basic": "Sugar"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Agricultural Food & other Products",
+    "industry_basic": "Edible Oil"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Agricultural Food & other Products",
+    "industry_basic": "Tea & Coffee"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Agricultural Food & other Products",
+    "industry_basic": "Other Agricultural Products"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Beverages",
+    "industry_basic": "Breweries & Distilleries"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Beverages",
+    "industry_basic": "Other Beverages"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Cigarettes & Tobacco Products",
+    "industry_basic": "Cigarettes & Tobacco Products"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Diversified FMCG",
+    "industry_basic": "Diversified FMCG"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Animal Feed"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Other Food Products"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Dairy Products"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Meat Products including Poultry"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Seafood"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Food Products",
+    "industry_basic": "Packaged Foods"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Household Products",
+    "industry_basic": "Stationary"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Household Products",
+    "industry_basic": "Household Products"
+  },
+  {
+    "industry_macro": "Fast Moving Consumer Goods",
+    "industry_sector": "Fast Moving Consumer Goods",
+    "industry": "Personal Products",
+    "industry_basic": "Personal Care"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Banks",
+    "industry_basic": "Other Bank"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Banks",
+    "industry_basic": "Public Sector Bank"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Banks",
+    "industry_basic": "Private Sector Bank"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Depositories Clearing Houses and Other Intermediaries"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Asset Management Company"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Ratings"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Stockbroking & Allied"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Other Capital Market related Services"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Financial Products Distributor"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Depositories, Clearing Houses and Other Intermediaries"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Capital Markets",
+    "industry_basic": "Exchange and Data Platform"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Holding Company"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Investment Company"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Housing Finance Company"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Microfinance Institutions"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Other Financial Services"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Financial Institution"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Finance",
+    "industry_basic": "Non Banking Financial Company (NBFC)"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Financial Technology (Fintech)",
+    "industry_basic": "Financial Technology (Fintech)"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Insurance",
+    "industry_basic": "Insurance Distributors"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Insurance",
+    "industry_basic": "General Insurance"
+  },
+  {
+    "industry_macro": "Financial Services",
+    "industry_sector": "Financial Services",
+    "industry": "Insurance",
+    "industry_basic": "Life Insurance"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Healthcare Equipment & Supplies",
+    "industry_basic": "Medical Equipment & Supplies"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Healthcare Services",
+    "industry_basic": "Healthcare Research, Analytics & Technology"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Healthcare Services",
+    "industry_basic": "Hospital"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Healthcare Services",
+    "industry_basic": "Healthcare Service Provider"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Pharmaceuticals & Biotechnology",
+    "industry_basic": "Biotechnology"
+  },
+  {
+    "industry_macro": "Healthcare",
+    "industry_sector": "Healthcare",
+    "industry": "Pharmaceuticals & Biotechnology",
+    "industry_basic": "Pharmaceuticals"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Aerospace & Defense",
+    "industry_basic": "Aerospace & Defense"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Agricultural Commercial & Construction Vehicles",
+    "industry_basic": "Tractors"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "industry_basic": "Construction Vehicles"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "industry_basic": "Dealers-Commercial Vehicles, Tractors, Construction Vehicles"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "industry_basic": "Commercial Vehicles"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Agricultural, Commercial & Construction Vehicles",
+    "industry_basic": "Tractors"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Electrical Equipment",
+    "industry_basic": "Heavy Electrical Equipment"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Electrical Equipment",
+    "industry_basic": "Other Electrical Equipment"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Manufacturing",
+    "industry_basic": "Railway Wagons"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Manufacturing",
+    "industry_basic": "Industrial Products"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Manufacturing",
+    "industry_basic": "Ship Building & Allied Services"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Electrodes & Refractories"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Aluminium, Copper & Zinc Products"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Glass - Industrial"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Other Industrial Products"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Iron & Steel Products"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Aluminium Copper & Zinc Products"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Packaging"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Rubber"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Castings & Forgings"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Abrasives & Bearings"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Plastic Products - Industrial"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Cables - Electricals"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Compressors, Pumps & Diesel Engines"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Capital Goods",
+    "industry": "Industrial Products",
+    "industry_basic": "Compressors Pumps & Diesel Engines"
+  },
+  {
+    "industry_macro": "Industrials",
+    "industry_sector": "Construction",
+    "industry": "Construction",
+    "industry_basic": "Civil Construction"
+  },
+  {
+    "industry_macro": "Information Technology",
+    "industry_sector": "Information Technology",
+    "industry": "IT - Hardware",
+    "industry_basic": "Computers Hardware & Equipments"
+  },
+  {
+    "industry_macro": "Information Technology",
+    "industry_sector": "Information Technology",
+    "industry": "IT - Services",
+    "industry_basic": "IT Enabled Services"
+  },
+  {
+    "industry_macro": "Information Technology",
+    "industry_sector": "Information Technology",
+    "industry": "IT - Software",
+    "industry_basic": "Software Products"
+  },
+  {
+    "industry_macro": "Information Technology",
+    "industry_sector": "Information Technology",
+    "industry": "IT - Software",
+    "industry_basic": "Computers - Software & Consulting"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Commercial Services & Supplies",
+    "industry_basic": "Business Process Outsourcing (BPO)/ Knowledge Process Outsourcing (KPO)"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Commercial Services & Supplies",
+    "industry_basic": "Trading & Distributors"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Commercial Services & Supplies",
+    "industry_basic": "Data Processing Services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Commercial Services & Supplies",
+    "industry_basic": "Consulting Services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Commercial Services & Supplies",
+    "industry_basic": "Diversified Commercial Services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Engineering Services",
+    "industry_basic": "Dredging"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Infrastructure",
+    "industry_basic": "Port & Port services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Infrastructure",
+    "industry_basic": "Road Assets - Toll Annuity Hybrid-Annuity"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Infrastructure",
+    "industry_basic": "Airport & Airport services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Infrastructure",
+    "industry_basic": "Road Assets–Toll, Annuity, Hybrid-Annuity"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Services",
+    "industry_basic": "Transport Related Services"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Services",
+    "industry_basic": "Road Transport"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Services",
+    "industry_basic": "Shipping"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Services",
+    "industry_basic": "Airline"
+  },
+  {
+    "industry_macro": "Services",
+    "industry_sector": "Services",
+    "industry": "Transport Services",
+    "industry_basic": "Logistics Solution Provider"
+  },
+  {
+    "industry_macro": "SERVICES",
+    "industry_sector": "SERVICES",
+    "industry": "TRADING",
+    "industry_basic": "TRADING"
+  },
+  {
+    "industry_macro": "Telecommunication",
+    "industry_sector": "Telecommunication",
+    "industry": "Telecom -  Equipment & Accessories",
+    "industry_basic": "Telecom -  Equipment & Accessories"
+  },
+  {
+    "industry_macro": "Telecommunication",
+    "industry_sector": "Telecommunication",
+    "industry": "Telecom - Equipment & Accessories",
+    "industry_basic": "Telecom - Equipment & Accessories"
+  },
+  {
+    "industry_macro": "Telecommunication",
+    "industry_sector": "Telecommunication",
+    "industry": "Telecom - Services",
+    "industry_basic": "Telecom - Infrastructure"
+  },
+  {
+    "industry_macro": "Telecommunication",
+    "industry_sector": "Telecommunication",
+    "industry": "Telecom - Services",
+    "industry_basic": "Other Telecom Services"
+  },
+  {
+    "industry_macro": "Telecommunication",
+    "industry_sector": "Telecommunication",
+    "industry": "Telecom - Services",
+    "industry_basic": "Telecom - Cellular & Fixed line services"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Power",
+    "industry": "Power",
+    "industry_basic": "Power Distribution"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Power",
+    "industry": "Power",
+    "industry_basic": "Power Trading"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Power",
+    "industry": "Power",
+    "industry_basic": "Power - Transmission"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Power",
+    "industry": "Power",
+    "industry_basic": "Power Generation"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Power",
+    "industry": "Power",
+    "industry_basic": "Integrated Power Utilities"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Utilities",
+    "industry": "Other Utilities",
+    "industry_basic": "Water Supply & Management"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Utilities",
+    "industry": "Other Utilities",
+    "industry_basic": "Multi Utilities"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Utilities",
+    "industry": "Other Utilities",
+    "industry_basic": "Other Utilities"
+  },
+  {
+    "industry_macro": "Utilities",
+    "industry_sector": "Utilities",
+    "industry": "Other Utilities",
+    "industry_basic": "Waste Management"
+  }
+]
