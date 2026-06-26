@@ -1,6 +1,6 @@
 ---
 name: setup
-description: Verify the stockinsights.ai India MCP connection and OAuth setup before running Indian equity research queries.
+description: Verify the stockinsights.ai India MCP connection and OAuth setup.
 ---
 
 # stockinsights.ai India Setup
