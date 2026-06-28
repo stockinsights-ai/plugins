@@ -10,7 +10,7 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 ## Workflow
 
 1. Parse the user intent and resolve ticker(s).
-2. Use semantic search, keyword search, or both for any query. The LLM decides the retrieval mix based on what is most likely to produce sufficient evidence; there is no hard query-type restriction.
+2. Use semantic search, keyword search, or both for any query. The LLM decides the retrieval mix based on what is most likely to produce sufficient evidence.
 3. Use latest filings by default. Omit `filing_criteria` when the query does not need a specific filing type or time scope; the API will search latest filings only. Use `time_scope` only when constraining filing type, specific fiscal periods, comparisons across periods, or all historical data.
 4. Run one or more retrievals until evidence is sufficient.
 5. Answer only from retrieved evidence with inline citations.
@@ -29,8 +29,19 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 
 - Purpose: keyword/full-text search across filing text.
 - Useful for: exact phrases, named line items, proper nouns, quoted terms, specific metric wording, validating whether a filing mentions a term, or any query where keyword retrieval may find better evidence.
+- Query syntax: backed by PostgreSQL web-search style full-text search, so the query can use natural language plus boolean-style operators such as `OR`, `AND`, negation with `-term`, and quoted phrases like `"margin expansion"`.
 - Supported filing types: `earnings-transcript`, `annual-report`, `investor-presentation`.
-- Output: JSON response containing matched page/chunk text plus filing, company, citation title, `citation_link`, and screenshot links when available. When screenshot links are present, especially for `investor-presentation`, prioritize downloading and analyzing screenshots as primary page-level evidence (as they often contain critical visual tables and charts) and use text fields as a fallback.
+- Output: JSON response containing matched page/chunk text plus filing, company, citation title, `citation_link`, and screenshot links when available. When screenshot links are present, especially for `investor-presentation`, prioritize downloading and analyzing screenshots as primary page-level evidence (as they often contain critical visual tables and charts) and use text as fallback.
+
+Keyword-search tips:
+
+- Use quoted phrases for exact wording, for example `"EBITDA per ton"` or `"demand environment"`.
+- Use `OR` for alternatives, for example `margin OR profitability`.
+- Use `AND` when all concepts should appear, for example `capex AND guidance`.
+- Use `-term` to exclude noisy matches, for example `debt -debenture`.
+- Keep queries short and evidence-focused. Long natural-language questions can dilute matches; convert them into key terms or phrases.
+- Avoid over-constraining with too many `AND` terms, because filings may use synonyms or split related concepts across nearby text.
+- Keyword search is lexical, not semantic. Use semantic search as a companion when the filing may discuss the idea without using the exact words.
 
 ## Input contract
 
