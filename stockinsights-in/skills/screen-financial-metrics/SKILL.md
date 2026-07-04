@@ -49,7 +49,7 @@ Call `screen_financial_statements` with:
   - Mixed (`(A AND B) OR C`): `[{ "conditions": [A, B] }, { "conditions": [C] }]`.
 - `metrics`: extra metric keys to include in the output **without screening** (for fetch/compare).
 - `tickers`: plain (`TCS`) or exchange-qualified (`NSE:RELIANCE`, `BSE:500325`); OR within the list. Required when there are no `condition_groups` (a pure lookup must be bounded).
-- `period`: `{ reporting_type, mode, ... }` (see below). Defaults to latest annual.
+- `period`: `{ reporting_type, mode, ... }` (see below). Defaults to latest quarterly.
 - `match`: how a condition is applied across multiple periods — `latest` (default), `all` (every period), `any` (at least one), `average` (mean).
 - `statement_scope`: `consolidated` (default) or `standalone`. `audit_status`: `any` (default), `audited`, `unaudited`.
 - `sort` (`{ metric, direction }`) and `limit` (default 50).
@@ -60,8 +60,8 @@ At least one of `condition_groups` or `metrics` is required. To rank a universe,
 
 `period.reporting_type` sets the **granularity**:
 
-- `quarterly`: standalone-quarter figure. Most companies are mandated to file quarterly, so this suits most recent-period screens.
-- `annual`: full-year figure (this is the tool's fallback when `reporting_type` is omitted).
+- `quarterly`: standalone-quarter figure (default; most companies are mandated to file quarterly, so this suits most recent-period screens).
+- `annual`: full-year figure.
 - `half_yearly`: H1 cumulative figure.
 - `nine_months`: 9M cumulative figure (cash-flow 9M is essentially not filed — expect nulls).
 
