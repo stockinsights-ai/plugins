@@ -50,7 +50,7 @@ Call `screen_financial_statements` with:
 - `metrics`: extra metric keys to include in the output **without screening** (for fetch/compare).
 - `tickers`: plain (`TCS`) or exchange-qualified (`NSE:RELIANCE`, `BSE:500325`); OR within the list. Required when there are no `condition_groups` (a pure lookup must be bounded).
 - `period`: `{ reporting_type, mode, ... }` (see below). Defaults to latest quarterly.
-- `match`: how a condition is applied across multiple periods — `latest` (default), `all` (every period), `any` (at least one), `average` (mean).
+- `match`: how a condition is applied across the selected periods — `latest` (default; most recent selected period), `all` (every selected period), `any` (at least one selected period), `average` (mean).
 - `statement_scope`: `consolidated` (default) or `standalone`. `audit_status`: `any` (default), `audited`, `unaudited`.
 - `sort` (`{ metric, direction }`) and `limit` (default 50).
 
@@ -68,7 +68,6 @@ At least one of `condition_groups` or `metrics` is required. To rank a universe,
 `period.mode` selects **which periods** of that granularity:
 
 - `latest`: the latest available period of `reporting_type` (for `quarterly`, the actual latest reported quarter — not hardcoded to Q4).
-- `all`: every available period.
 - `last`: the last N periods; set `last` to a number (e.g. `reporting_type: quarterly` + `last: 4` = last 4 quarters).
 - `periods`: explicit periods — `fiscal_years` (`FYxx`, e.g. `FY26`) for `annual`/`half_yearly`/`nine_months`, **or** `fiscal_quarters` (`FYxxQy`, e.g. `FY26Q4`) for `quarterly`.
 
