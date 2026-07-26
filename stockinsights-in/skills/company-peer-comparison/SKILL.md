@@ -21,8 +21,8 @@ Compare Indian listed companies using consistent periods, statement scope, units
 - MCP server: `stockinsights-in`
 - Universe tools: `resolve_companies`, `filter_companies`
 - Financial tools: `screen_financial_statements`, optionally `list_financial_statement_metrics`
-- Company-data reference: `../references/datasets/company-data.md`
-- Financial-metrics reference: `../references/datasets/screen-financial-metrics.md`
+- Company-data reference: `../equity-research-workflow/references/datasets/company-data.md`
+- Financial-metrics reference: `../equity-research-workflow/references/datasets/screen-financial-metrics.md`
 
 If an MCP tool is unavailable, report the blocker instead of filling values from model memory.
 
@@ -30,14 +30,14 @@ If an MCP tool is unavailable, report the blocker instead of filling values from
 
 1. Determine the universe:
    - Named companies: use clear tickers directly and resolve only ambiguous names.
-   - Industry or sector: read `../references/datasets/company-data.md`, map the classification, and call `filter_companies`.
+   - Industry or sector: read `../equity-research-workflow/references/datasets/company-data.md`, map the classification, and call `filter_companies`.
    - Peers of one company: fetch its classification, filter on the same four classification levels, exclude the source, and rank candidates by market-cap proximity. Relax `industry_basic`, then `industry`, only when the strict set is too small.
    - Unless the user requests otherwise, compare up to 10 companies for an industry or sector, ordered by market capitalization, and state that selection rule.
 2. Honor user-requested metrics. Otherwise use the relevant default profile below.
 3. Make one tickers-only `screen_financial_statements` lookup: omit `condition_groups`, include all companies in `tickers`, and request only built-in dependencies in `metrics`.
 4. Use no more than 10 built-in metric keys. Prioritize the metrics most relevant to the question when dependencies exceed the limit.
 5. Use the same `period`, `statement_scope`, and `audit_status` for every company. Default to consolidated annual figures for the latest two periods so growth and average-balance ratios can be calculated.
-6. Calculate derived values only after retrieval and under `../references/datasets/screen-financial-metrics.md` and its linked calculation references.
+6. Calculate derived values only after retrieval and under `../equity-research-workflow/references/datasets/screen-financial-metrics.md` and its linked calculation references.
 7. Compare a common fiscal period. If no recent common period exists, show each company's period explicitly and state that they differ.
 
 ## Metric Selection
