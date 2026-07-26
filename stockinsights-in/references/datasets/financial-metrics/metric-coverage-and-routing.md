@@ -34,14 +34,14 @@ Do not derive:
 - Gross block, accumulated depreciation, CWIP, investments, lease liabilities, contingent liabilities, trade receivables/payables, customer advances, or preference capital.
 - Complete Piotroski score, export percentage, expected/forecast metrics, result dates, or credit ratings.
 
-Use `filings-search` for company-reported operational or disclosure metrics.
+Use filing search, following `../../references/datasets/filings-search.md`, for company-reported operational or disclosure metrics.
 
 ## Outside Statement-Only Scope
 
-Do not calculate or route through this skill:
+Do not calculate or route through the financial-statement metrics data source:
 
 - Price, market capitalization, PE/PB/PS/PEG, dividend or earnings yield, enterprise value, EV/EBITDA, price/FCF, industry valuation, or historical price returns.
 - Volume, DMA, RSI, MACD, highs/lows, or other technical indicators.
 - Promoter/public/FII/DII holdings, pledges, shareholder count, SME status, or changes in ownership.
 
-Use `company-data` only for the market and valuation fields it supports. Do not manufacture unsupported market, ownership, forecast, or technical data.
+Use the company-data source, following `../../references/datasets/company-data.md`, only for the market and valuation fields it supports. Do not manufacture unsupported market, ownership, forecast, or technical data.

@@ -1,13 +1,8 @@
----
-name: filing-content
-description: Retrieve the content or source artifacts for exactly one Indian company filing. Use for summaries, detailed analysis, section extraction, or source artifact retrieval for one earnings transcript, annual report, investor presentation, or quarterly result.
----
-
 # Filing Content
 
 ## Purpose
 
-Use this skill when the user needs full context from one specific Indian listed-company filing, not a cross-filing search result. It retrieves one filing selected by ticker, filing type, and time scope.
+Use this reference when the user needs full context from one specific Indian listed-company filing, not a cross-filing search result. It retrieves one filing selected by ticker, filing type, and time scope.
 
 ## Example Queries
 
@@ -18,7 +13,7 @@ Use this skill when the user needs full context from one specific Indian listed-
 
 ## Data
 
-This skill retrieves filing content for the Indian (IN) market.
+This data source retrieves filing content for the Indian (IN) market.
 
 Supported filing types:
 
@@ -98,7 +93,7 @@ For `latest`, omit `fiscal_year` and `fiscal_quarter`. For `period`, set exactly
 4. Use the returned filing only; this tool does not return multiple filings.
 5. If the filing is not found, has no pages, or has no artifacts, say so clearly and suggest checking the ticker, filing type, or fiscal period.
 
-Use this skill for comprehensive review of one filing. For cross-company or cross-period search, keyword lookup, semantic lookup, announcements, or past N quarters/years across many filings, use the relevant discovery/search skill first and then use this skill only after one filing is selected.
+Use this data source for comprehensive review of one filing. For cross-company or cross-period search, keyword lookup, semantic lookup, announcements, or past N quarters/years across many filings, use filing search first and retrieve filing content only after one filing is selected.
 
 ## Response Guidance
 

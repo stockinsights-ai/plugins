@@ -1,5 +1,5 @@
 ---
-name: earnings-summary
+name: earnings-summary-workflow
 description: Summarize one Indian company earnings-call transcript into a structured Markdown quick summary, sentiment analysis, business outlook, and potential risks. Use when the user provides a transcript or asks for a comprehensive summary of one identified earnings call. Ground every material point in the transcript.
 ---
 
@@ -21,13 +21,14 @@ Analyze exactly one earnings-call transcript. Separate reported performance from
 - MCP server: `stockinsights-in`
 - Primary tool: `get_filing_content`
 - Supporting tool: `resolve_companies` for ambiguous company names
+- Dataset reference: `../../references/datasets/filing-content.md`
 
 Use only the supplied transcript or transcript returned by `get_filing_content`. Do not add facts from model memory or other filings.
 
 ## Retrieval Workflow
 
 1. Identify the company and fiscal quarter. Use the latest available earnings transcript when the user does not specify a period.
-2. If transcript text is supplied, analyze it directly. Otherwise resolve an ambiguous company identity and call `get_filing_content` with the plain ticker, `filing_type: "earnings-transcript"`, and the requested `time_scope`.
+2. If transcript text is supplied, analyze it directly. Otherwise read `../../references/datasets/filing-content.md`, resolve an ambiguous company identity, and call `get_filing_content` with the plain ticker, `filing_type: "earnings-transcript"`, and the requested `time_scope`.
 3. Read all returned transcript pages, including prepared remarks and analyst Q&A. Track the page and `citation_link` for every material point.
 4. Separate reported results from targets, expectations, plans, and aspirations.
 5. Consolidate repeated statements while preserving important numbers, periods, segments, and management qualifications.

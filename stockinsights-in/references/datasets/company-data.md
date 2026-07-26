@@ -1,11 +1,8 @@
----
-name: company-data
-description: The skill contains instructions to resolve company names/tickers and fetch company details or filter companies. Company details include company profile, industry, sector, marketdata such as marketcap, current price, 52 week range, and PE ratio. Filter the companies based on marketcap, industry, sector, PE ratio etc. Use this skill when the a query requires company details, market data, or discover peer/related companies.
----
+# Company Data
 
 ## Purpose
 
-Use this skill to resolve company names/tickers and answer structured company profile and market data queries, screen companies, and discover peers.
+Use this reference to resolve company names/tickers and answer structured company profile and market data queries, screen companies, and discover peers.
 
 ## MCP Server
 
@@ -40,7 +37,7 @@ If the query does not specify an order, use the default `marketcap desc`. Keep t
 
 ### Industry classification data reference
 
-Read `references/industry-classification.json` when you want to filter companies based on industry terms such as auto, banking, IT, or pharma.
+Read `../../references/datasets/industry-classification.json` when you want to filter companies based on industry terms such as auto, banking, IT, or pharma.
 
 - Copy exact field names and values from one or more matching rows.
 - Do not normalize capitalization, punctuation, or legacy variants.

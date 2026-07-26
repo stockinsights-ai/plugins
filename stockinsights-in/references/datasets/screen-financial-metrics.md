@@ -1,8 +1,3 @@
----
-name: screen-financial-metrics
-description: First-choice skill for Indian financial-statement metric questions. Fetch, compare, screen, or rank companies using XBRL income-statement, balance-sheet, cash-flow, EPS, supported reported ratios, and statement-only derived metrics for explicit or relative fiscal periods. Do not use for market-price/valuation snapshots or company-defined operational KPIs.
----
-
 # Screen Financial Metrics
 
 ## Purpose
@@ -33,13 +28,13 @@ Market-price and valuation fields such as price, market cap, PE, PS, PB, PEG, an
 
 The MCP tool accepts only built-in metric keys. For a requested derived metric, fetch its built-in dependencies and calculate it after retrieval. Read only the relevant reference:
 
-- Profit, EBITDA/EBIT, OPM/NPM, tax, expense, or per-share derivations: `references/profitability-and-margins.md`
-- YoY/QoQ growth, CAGR, TTM, averages, medians, or margin change: `references/growth-and-trends.md`
-- ROE, ROA, ROCE/ROIC, turnover, or financial leverage: `references/returns-and-efficiency.md`
-- Working capital, liquidity, debt, coverage, or capital structure: `references/liquidity-and-leverage.md`
-- Cash-flow ratios, earnings quality, or accruals: `references/cash-flow-and-quality.md`
-- Bank/NBFC-specific metrics: `references/banking-metrics.md`
-- Unclear Screener-style labels or unsupported inputs: `references/metric-coverage-and-routing.md`
+- Profit, EBITDA/EBIT, OPM/NPM, tax, expense, or per-share derivations: `../../references/datasets/financial-metrics/profitability-and-margins.md`
+- YoY/QoQ growth, CAGR, TTM, averages, medians, or margin change: `../../references/datasets/financial-metrics/growth-and-trends.md`
+- ROE, ROA, ROCE/ROIC, turnover, or financial leverage: `../../references/datasets/financial-metrics/returns-and-efficiency.md`
+- Working capital, liquidity, debt, coverage, or capital structure: `../../references/datasets/financial-metrics/liquidity-and-leverage.md`
+- Cash-flow ratios, earnings quality, or accruals: `../../references/datasets/financial-metrics/cash-flow-and-quality.md`
+- Bank/NBFC-specific metrics: `../../references/datasets/financial-metrics/banking-metrics.md`
+- Unclear Screener-style labels or unsupported inputs: `../../references/datasets/financial-metrics/metric-coverage-and-routing.md`
 
 Apply these safeguards:
 
@@ -55,7 +50,7 @@ Apply these safeguards:
 - MCP server: `stockinsights-in`
 - Primary tool: `screen_financial_statements` — runs the screen / fetch / comparison.
 - Discovery tool: `list_financial_statement_metrics` — returns the authoritative metric catalog (keys, units, source codes); takes no input. Call it only if unsure of valid metric keys.
-- Required first step for sector / industry / market-cap universes: resolve them to tickers with the `company-data` skill (`filter_companies`), then pass the tickers here. This tool has no sector/market-cap filter — only `tickers`.
+- Required first step for sector / industry / market-cap universes: resolve them to tickers with `filter_companies`, following `../../references/datasets/company-data.md`, then pass the tickers here. This tool has no sector/market-cap filter — only `tickers`.
 
 Use only the `stockinsights-in` MCP server. If a tool is unavailable, report the blocker plainly.
 
@@ -193,7 +188,7 @@ TCS quarterly revenue — last 4 standalone quarters:
 ## Retrieval Workflow
 
 1. Parse intent: which metric conditions, output metrics, period/granularity, scope, and company universe.
-2. If the query targets a sector / industry / market-cap universe, resolve it to tickers first via the `company-data` skill, then pass those `tickers`.
+2. If the query targets a sector / industry / market-cap universe, resolve it to tickers first with `filter_companies`, following `../../references/datasets/company-data.md`, then pass those `tickers`.
 3. If unsure of valid metric keys or units, call `list_financial_statement_metrics`.
 4. Build the `screen_financial_statements` payload from the constraints above. Use `condition_groups` for screening logic (AND/OR/mixed), `metrics` + `tickers` for a lookup/comparison.
 5. Call `screen_financial_statements`. If no rows return, retry with a different `reporting_type` (`half_yearly` or `annual`) before concluding no data.
@@ -212,6 +207,6 @@ The response has `period` (evaluated `reporting_type` and `fiscal_periods` label
 
 - Use only the `stockinsights-in` MCP server; do not substitute another source or model memory for financial values.
 - No ticker + no `condition_groups` is invalid — a lookup must be bounded by `tickers`.
-- Market-price and valuation metrics (price, PE, PB, PS, PEG, EV/EBITDA) and market-cap screening are out of scope; route supported fields through `company-data`.
+- Market-price and valuation metrics (price, PE, PB, PS, PEG, EV/EBITDA) and market-cap screening are out of scope; route supported fields through `filter_companies`, following `../../references/datasets/company-data.md`.
 - ROE, ROCE, growth, margins, liquidity ratios, and other supported statement-only calculations are derived after retrieval under the reference rules. They cannot be used directly as MCP conditions, output metric keys, or sort keys.
 - Balance-sheet metrics are point-in-time and are read at the matching period end regardless of `reporting_type`.

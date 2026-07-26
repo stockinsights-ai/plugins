@@ -1,7 +1,4 @@
----
-name: filings-search
-description: Search Indian filings for qualitative, thematic, operational-KPI, disclosure, and cross-company questions. Use semantic search first for concepts, strategy, guidance, risks, explanations, or company-defined metrics; use keyword search first only for exact terms or phrases. Do not use for supported financial-statement metrics or full-document summaries.
----
+# Filings Search
 
 ## MCP Server
 
@@ -9,13 +6,13 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 
 ## Workflow
 
-1. Route supported financial-statement metrics to `screen-financial-metrics`. Route a comprehensive summary or section extraction for one identified filing to `filing-content`.
+1. Route supported financial-statement metrics to the financial-metrics data source. Route a comprehensive summary or section extraction for one identified filing to filing content.
 2. For concepts, themes, strategy, guidance, risks, explanations, segment commentary, or non-standard operational KPIs, start with `search_filings_semantic`.
 3. For an exact phrase, named project/product, proper noun, or source-native metric label, start with `search_filings_keyword`.
 4. For broad `which`, `list`, or `find companies` questions, search across companies without resolving candidates first. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
 5. Use latest filings by default. Omit `filing_criteria` when no filing type or time scope is required; otherwise use `latest`, `all`, or explicit `periods` as requested.
 6. Stop when the primary retrieval provides sufficient evidence. If a semantic search is incomplete, run one keyword search using likely source-native labels and useful synonyms; do not repeat the semantic query verbatim.
-7. If both searches remain incomplete for one company, retrieve the single most likely investor presentation, annual report, earnings transcript, or quarterly result with `filing-content`. Quarterly results are not in either search index and must be retrieved directly.
+7. If both searches remain incomplete for one company, retrieve the single most likely investor presentation, annual report, earnings transcript, or quarterly result with `get_filing_content`. Quarterly results are not in either search index and must be retrieved directly.
 8. Answer only from retrieved evidence with inline citations. If evidence remains weak, stale, or absent, state what is missing and the periods searched.
 
 ## Tools
@@ -51,7 +48,7 @@ Keyword-search tips:
 - Earnings transcript: guidance, management outlook, segment explanations, and analyst Q&A.
 - Annual report: long-term strategy, business model, risks, audited narrative, and market positioning.
 - Investor presentation: KPIs, segment/geographic mix, expansion plans, charts, and operating metrics; use keyword search because presentations are not in semantic search.
-- Quarterly result/XBRL: use `screen-financial-metrics` for supported exact values and `filing-content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
+- Quarterly result/XBRL: use `screen_financial_statements` for supported exact values and `get_filing_content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
 
 ## Breakdown and Mix Questions
 
@@ -61,7 +58,7 @@ For segment, geographic, product, or revenue-mix questions:
 2. Determine whether the breakdown is statutory or management-defined, then choose the latest source that reports the requested dimensions. Do not hardcode category names.
 3. Use `latest` when the user does not specify a period. Search source-native labels and synonyms; keep ticker and period in filters rather than repeating them in the query.
 4. If a search result contains the requested values and citation, answer from it. Do not fetch the full filing merely because a page number is available.
-5. If evidence is incomplete, follow the workflow fallback to `filing-content`. An empty search is no match for that query, not proof that the disclosure does not exist.
+5. If evidence is incomplete, follow the workflow fallback to `get_filing_content`. An empty search is no match for that query, not proof that the disclosure does not exist.
 6. Do not call an annual-report disclosure the latest reported result unless a newer quarterly source has been checked when relevant. State the source period precisely.
 
 ## Input contract

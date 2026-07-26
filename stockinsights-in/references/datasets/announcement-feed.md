@@ -1,13 +1,8 @@
----
-name: announcement-feed
-description: Fetch Indian corporate announcements and their summaries. Use for event-driven questions about recent company updates, material developments, management changes, contracts, legal issues, credit rating changes, dividends, disruptions, FDA inspections, earnings-call notices, and other exchange-disclosed market announcements.
----
-
 # Announcement Feed
 
 ## Purpose
 
-Use this skill to retrieve Indian corporate announcements disclosed through exchange filings. It supports exact company lookups, market-wide latest announcements, company-universe filters, announcement categories, sentiment/significance filters, and calendar time windows.
+Use this reference to retrieve Indian corporate announcements disclosed through exchange filings. It supports exact company lookups, market-wide latest announcements, company-universe filters, announcement categories, sentiment/significance filters, and calendar time windows.
 
 Use this for announcement summaries and source links. Do not use it to calculate financial metrics, analyze full filings, or search filing text.
 
@@ -51,7 +46,7 @@ Construct the MCP payload from the current tool schema. Top-level fields:
 
 `filters: null` or omitted fetches latest announcements across all companies.
 
-Use `filters.categories` for fetching announcements based on categories. Read `references/categories.js` and copy exact category names from that list.
+Use `filters.categories` for fetching announcements based on categories. Read `../../references/datasets/announcement-categories.js` and copy exact category names from that list.
 
 `filters.time_scope: null` or omitted defaults to the latest one-month window. `time_scope.mode: "latest"` also uses the latest one-month window.
 
@@ -123,9 +118,9 @@ Explicit date range:
 - `filters.tickers` accepts plain Indian tickers.
 - `filters.company_filters.marketcap_categories` supports `large`, `mid`, `small`, `micro`, and `nano`.
 - `filters.company_filters.industry_filters` supports exact `industry_macro`, `industry_sector`, `industry`, and `industry_basic` values. Fields within one object use AND; multiple objects use OR.
-  - For exact `industry_filters` values, refer to `company-data/references/industry-classification.json`.
+  - For exact `industry_filters` values, refer to `../../references/datasets/industry-classification.json`.
 - When both `tickers` and `company_filters` are present, they are intersected.
-- `filters.categories` must use exact announcement category names from `references/categories.js`.
+- `filters.categories` must use exact announcement category names from `../../references/datasets/announcement-categories.js`.
 - `filters.sentiment` supports `positive`, `negative`, and `neutral`.
 - `filters.significance: true` returns significant announcements only; `false` returns non-significant announcements only.
 

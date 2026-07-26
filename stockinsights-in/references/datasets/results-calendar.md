@@ -1,8 +1,3 @@
----
-name: results-calendar
-description: Fetch the latest Indian listed-company results calendar, optionally filtered by confirmed tickers. Use when the user asks which companies are scheduled to report results or when a company is expected to report. Do not use for historical financial results, earnings analysis, or filing content.
----
-
 # Results Calendar
 
 ## Purpose
