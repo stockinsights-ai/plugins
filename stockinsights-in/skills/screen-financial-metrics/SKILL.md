@@ -1,6 +1,6 @@
 ---
 name: screen-financial-metrics
-description: Screen, fetch, or compare Indian listed companies on income statement, balance sheet, and cash flow metrics from XBRL filings. Use when a query asks to find or rank companies by financial-statement criteria (revenue, net profit, borrowings, cash flow, EPS, solvency ratios), or to fetch/compare those metrics for specific companies by ticker, optionally over a fiscal period or window.
+description: First-choice skill for Indian financial-statement metric questions. Fetch, compare, screen, or rank companies using XBRL income-statement, balance-sheet, cash-flow, EPS, supported reported ratios, and statement-only derived metrics for explicit or relative fiscal periods. Do not use for market-price/valuation snapshots or company-defined operational KPIs.
 ---
 
 # Screen Financial Metrics
@@ -27,7 +27,27 @@ Curated financial-statement metrics derived from company XBRL filings. Amounts a
 
 Variations to expect: a value can be `null` when a company did not report that metric for a period; bank/NBFC-specific metrics (`gross_npa_pct`, `return_on_assets`, `deposits`, `advances`) are only populated for financial companies.
 
-Not available here: market/valuation ratios (PE, PS, EV/EBITDA, ROE, ROCE). Market cap is not a screenable metric — resolve a market-cap/sector/industry universe to tickers first (see company-data skill), then pass those tickers.
+Market-price and valuation fields such as price, market cap, PE, PS, PB, PEG, and EV/EBITDA are not available here. Resolve a market-cap/sector/industry universe to tickers with `company-data`, then pass those tickers here. For order book, capacity, utilization, ARPU, volumes, segment mix, or other company-defined KPIs, use `filings-search`.
+
+## Derived-Metric Routing
+
+The MCP tool accepts only built-in metric keys. For a requested derived metric, fetch its built-in dependencies and calculate it after retrieval. Read only the relevant reference:
+
+- Profit, EBITDA/EBIT, OPM/NPM, tax, expense, or per-share derivations: `references/profitability-and-margins.md`
+- YoY/QoQ growth, CAGR, TTM, averages, medians, or margin change: `references/growth-and-trends.md`
+- ROE, ROA, ROCE/ROIC, turnover, or financial leverage: `references/returns-and-efficiency.md`
+- Working capital, liquidity, debt, coverage, or capital structure: `references/liquidity-and-leverage.md`
+- Cash-flow ratios, earnings quality, or accruals: `references/cash-flow-and-quality.md`
+- Bank/NBFC-specific metrics: `references/banking-metrics.md`
+- Unclear Screener-style labels or unsupported inputs: `references/metric-coverage-and-routing.md`
+
+Apply these safeguards:
+
+1. Fetch all dependencies in one `screen_financial_statements` call with identical period, statement scope, and audit status.
+2. Calculate only when every required value is present and each denominator is non-zero. Never convert a missing value to zero.
+3. Use annual flows with average opening/closing balance-sheet values for return and turnover ratios. Do not mix quarterly flows with annual balances.
+4. Keep calculations ticker-scoped or limited to returned companies. Never claim an exhaustive screen, filter, or ranking by a derived metric because derived names cannot be sent as conditions or sort keys.
+5. Prefer a built-in disclosed ratio when one exists. Label calculated alternatives as `Derived` and state the adopted definition when definitions can differ.
 
 ## Sources and Tools
 
@@ -47,7 +67,7 @@ Call `screen_financial_statements` with:
   - Pure AND (`A AND B`): one group → `[{ "conditions": [A, B] }]`.
   - Pure OR (`A OR B`): one condition per group → `[{ "conditions": [A] }, { "conditions": [B] }]`.
   - Mixed (`(A AND B) OR C`): `[{ "conditions": [A, B] }, { "conditions": [C] }]`.
-- `metrics`: extra metric keys to include in the output **without screening** (for fetch/compare).
+- `metrics`: up to 10 built-in metric keys to include in the output **without screening** (for fetch/compare). Never send a derived metric name.
 - `tickers`: plain (`TCS`) or exchange-qualified (`NSE:RELIANCE`, `BSE:500325`); OR within the list. Required when there are no `condition_groups` (a pure lookup must be bounded).
 - `period`: `{ reporting_type, mode, ... }` (see below). Defaults to latest quarterly.
 - `match`: how a condition is applied across the selected periods — `latest` (default; most recent selected period), `all` (every selected period), `any` (at least one selected period), `average` (mean).
@@ -192,5 +212,6 @@ The response has `period` (evaluated `reporting_type` and `fiscal_periods` label
 
 - Use only the `stockinsights-in` MCP server; do not substitute another source or model memory for financial values.
 - No ticker + no `condition_groups` is invalid — a lookup must be bounded by `tickers`.
-- Valuation metrics (PE, PS, EV/EBITDA, ROE, ROCE) and market-cap screening are out of scope here; route those through the `company-data` skill.
+- Market-price and valuation metrics (price, PE, PB, PS, PEG, EV/EBITDA) and market-cap screening are out of scope; route supported fields through `company-data`.
+- ROE, ROCE, growth, margins, liquidity ratios, and other supported statement-only calculations are derived after retrieval under the reference rules. They cannot be used directly as MCP conditions, output metric keys, or sort keys.
 - Balance-sheet metrics are point-in-time and are read at the matching period end regardless of `reporting_type`.

@@ -1,6 +1,6 @@
 ---
 name: filings-search
-description: Search through company filings - both semantic and keyword search - to answer investor/company related questions.
+description: Search Indian filings for qualitative, thematic, operational-KPI, disclosure, and cross-company questions. Use semantic search first for concepts, strategy, guidance, risks, explanations, or company-defined metrics; use keyword search first only for exact terms or phrases. Do not use for supported financial-statement metrics or full-document summaries.
 ---
 
 ## MCP Server
@@ -9,12 +9,14 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 
 ## Workflow
 
-1. Parse the user intent and resolve ticker(s).
-2. Use semantic search, keyword search, or both for any query. The LLM decides the retrieval mix based on what is most likely to produce sufficient evidence.
-3. Use latest filings by default. Omit `filing_criteria` when the query does not need a specific filing type or time scope; the API will search latest filings only. Use `time_scope` only when constraining filing type, specific fiscal periods, comparisons across periods, or all historical data.
-4. Run one or more retrievals until evidence is sufficient.
-5. Answer only from retrieved evidence with inline citations.
-6. If evidence is weak or absent, return insufficient data.
+1. Route supported financial-statement metrics to `screen-financial-metrics`. Route a comprehensive summary or section extraction for one identified filing to `filing-content`.
+2. For concepts, themes, strategy, guidance, risks, explanations, segment commentary, or non-standard operational KPIs, start with `search_filings_semantic`.
+3. For an exact phrase, named project/product, proper noun, or source-native metric label, start with `search_filings_keyword`.
+4. For broad `which`, `list`, or `find companies` questions, search across companies without resolving candidates first. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
+5. Use latest filings by default. Omit `filing_criteria` when no filing type or time scope is required; otherwise use `latest`, `all`, or explicit `periods` as requested.
+6. Stop when the primary retrieval provides sufficient evidence. If a semantic search is incomplete, run one keyword search using likely source-native labels and useful synonyms; do not repeat the semantic query verbatim.
+7. If both searches remain incomplete for one company, retrieve the single most likely investor presentation, annual report, earnings transcript, or quarterly result with `filing-content`. Quarterly results are not in either search index and must be retrieved directly.
+8. Answer only from retrieved evidence with inline citations. If evidence remains weak, stale, or absent, state what is missing and the periods searched.
 
 ## Tools
 
@@ -24,6 +26,7 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 - Useful for: strategy, management commentary, risk discussion, outlook, business model, capex plans, competitive positioning, qualitative KPI drivers, or any query where semantic retrieval may find better evidence.
 - Supported filing types: `earnings-transcript`, `annual-report`
 - Output: JSON response containing relevant chunks plus filing, company, citation title, and `citation_link`.
+- Query syntax: use one natural semantic phrase containing the relevant concepts and synonyms. Do not use quotes, `OR`, `AND`, exclusions, or other web-search operators.
 
 ### `search_filings_keyword`
 
@@ -42,6 +45,24 @@ Keyword-search tips:
 - Keep queries short and evidence-focused. Long natural-language questions can dilute matches; convert them into key terms or phrases.
 - Avoid over-constraining with too many `AND` terms, because filings may use synonyms or split related concepts across nearby text.
 - Keyword search is lexical, not semantic. Use semantic search as a companion when the filing may discuss the idea without using the exact words.
+
+## Document Routing
+
+- Earnings transcript: guidance, management outlook, segment explanations, and analyst Q&A.
+- Annual report: long-term strategy, business model, risks, audited narrative, and market positioning.
+- Investor presentation: KPIs, segment/geographic mix, expansion plans, charts, and operating metrics; use keyword search because presentations are not in semantic search.
+- Quarterly result/XBRL: use `screen-financial-metrics` for supported exact values and `filing-content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
+
+## Breakdown and Mix Questions
+
+For segment, geographic, product, or revenue-mix questions:
+
+1. Treat the requested breakdown as the primary retrieval intent, even when its base metric is a supported statement metric.
+2. Determine whether the breakdown is statutory or management-defined, then choose the latest source that reports the requested dimensions. Do not hardcode category names.
+3. Use `latest` when the user does not specify a period. Search source-native labels and synonyms; keep ticker and period in filters rather than repeating them in the query.
+4. If a search result contains the requested values and citation, answer from it. Do not fetch the full filing merely because a page number is available.
+5. If evidence is incomplete, follow the workflow fallback to `filing-content`. An empty search is no match for that query, not proof that the disclosure does not exist.
+6. Do not call an annual-report disclosure the latest reported result unless a newer quarterly source has been checked when relevant. State the source period precisely.
 
 ## Input contract
 

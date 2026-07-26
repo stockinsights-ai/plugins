@@ -25,7 +25,7 @@ If the MCP server is unavailable, tell the user to verify `.mcp.json` and restar
 
 ## Step 3: Verify MCP Connection
 
-Run a quick test by calling the India MCP tool `get_announcement_feed`.
+Run a quick test by calling the India MCP tool `get_announcements` with a small limit.
 
 Show the user whether the tool returned data. If OAuth is required, ask the user to complete the browser-based stockinsights.ai authorization flow. If it returns data, tell them setup is working. If it fails, report the error and suggest checking:
 

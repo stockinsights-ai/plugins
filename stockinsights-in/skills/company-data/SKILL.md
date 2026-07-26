@@ -1,11 +1,6 @@
 ---
 name: company-data
 description: The skill contains instructions to resolve company names/tickers and fetch company details or filter companies. Company details include company profile, industry, sector, marketdata such as marketcap, current price, 52 week range, and PE ratio. Filter the companies based on marketcap, industry, sector, PE ratio etc. Use this skill when the a query requires company details, market data, or discover peer/related companies.
-examples:
-  - What is the market cap and sector of Reliance Industries?
-  - Find mid cap auto companies in India
-  - Show peers of TCS in the IT services industry
-  - List companies in the pharmaceuticals sector with PE below 25
 ---
 
 ## Purpose
