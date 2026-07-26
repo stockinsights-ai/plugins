@@ -13,18 +13,18 @@ Before retrieving data, choose one primary source from the routing table. Do not
 
 ## Dataset References
 
-- Company resolution, profiles, market data, valuation snapshots, company filters, and peer discovery: `../../references/datasets/company-data.md`
-- Financial-statement metrics, comparisons, screens, and statement-derived calculations: `../../references/datasets/screen-financial-metrics.md`
-- Semantic and keyword search across filings: `../../references/datasets/filings-search.md`
-- Full content or source artifacts for exactly one filing: `../../references/datasets/filing-content.md`
-- Corporate announcements and recent material events: `../../references/datasets/announcement-feed.md`
-- Expected company results dates: `../../references/datasets/results-calendar.md`
+- Company resolution, profiles, market data, valuation snapshots, company filters, and peer discovery: `../references/datasets/company-data.md`
+- Financial-statement metrics, comparisons, screens, and statement-derived calculations: `../references/datasets/screen-financial-metrics.md`
+- Semantic and keyword search across filings: `../references/datasets/filings-search.md`
+- Full content or source artifacts for exactly one filing: `../references/datasets/filing-content.md`
+- Corporate announcements and recent material events: `../references/datasets/announcement-feed.md`
+- Expected company results dates: `../references/datasets/results-calendar.md`
 
 Supporting reference data:
 
-- Exact industry classifications: `../../references/datasets/industry-classification.json`
-- Exact announcement categories: `../../references/datasets/announcement-categories.js`
-- Financial calculation and metric-routing rules: `../../references/datasets/financial-metrics/`
+- Exact industry classifications: `../references/datasets/industry-classification.json`
+- Exact announcement categories: `../references/datasets/announcement-categories.js`
+- Financial calculation and metric-routing rules: `../references/datasets/financial-metrics/`
 
 ## Retrieval Routing
 
@@ -76,7 +76,7 @@ Semantic search covers earnings transcripts and annual reports. Keyword search a
 
 - Return valid Markdown with a direct, concise answer.
 - Prefer a table or visualization over prose-only presentation whenever the evidence contains a meaningful trend, comparison, composition, distribution, or sequence.
-- When a table or visualization may help, read and follow `../../references/visualisations/financial-data-visualisation.md` before formatting the answer.
+- When a table or visualization may help, read and follow `../references/visualisations/financial-data-visualisation.md` before formatting the answer.
 - Put citations immediately after the claims they support.
 - Format multiple citations as adjacent links, not a parenthesized or comma-separated bundle.
 - Never expose internal citation tokens or IDs.
