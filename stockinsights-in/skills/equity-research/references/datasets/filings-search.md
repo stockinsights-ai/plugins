@@ -7,13 +7,33 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 ## Workflow
 
 1. Route supported financial-statement metrics to the financial-metrics data source. Route a comprehensive summary or section extraction for one identified filing to filing content.
-2. For concepts, themes, strategy, guidance, risks, explanations, segment commentary, or non-standard operational KPIs, start with `search_filings_semantic`.
-3. For an exact phrase, named project/product, proper noun, or source-native metric label, start with `search_filings_keyword`.
-4. For broad `which`, `list`, or `find companies` questions, search across companies without resolving candidates first. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
-5. Use latest filings by default. Omit `filing_criteria` when no filing type or time scope is required; otherwise use `latest`, `all`, or explicit `periods` as requested.
-6. Stop when the primary retrieval provides sufficient evidence. If a semantic search is incomplete, run one keyword search using likely source-native labels and useful synonyms; do not repeat the semantic query verbatim.
-7. If both searches remain incomplete for one company, retrieve the single most likely investor presentation, annual report, earnings transcript, or quarterly result with `get_filing_content`. Quarterly results are not in either search index and must be retrieved directly.
-8. Answer only from retrieved evidence with inline citations. If evidence remains weak, stale, or absent, state what is missing and the periods searched.
+2. Choose the primary filing and search path by claim:
+   - Guidance, outlook, explanations, and analyst Q&A: semantic search of the latest earnings transcript; use keyword search for an exact phrase or named item.
+   - Operational KPIs and management-defined segment, product, or geographic breakdowns: keyword search of the latest investor presentation. Presentations are not in semantic search.
+   - Structural strategy, business model, and long-term risks: semantic search of the latest annual report; use search first for an exact phrase or named item.
+3. For broad `which`, `list`, or `find companies` questions, search across companies without resolving candidates first. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
+4. Use latest filings by default. Use an explicit requested period exactly.
+5. Stop when the primary retrieval is sufficient. If it is incomplete, try the other search mode when that filing type supports it, then retrieve the identified filing with `get_filing_content`.
+6. If the primary filing is absent or still incomplete, use the relevant alternate company filing: presentation for transcript guidance, transcript for presentation KPIs, or the filing nearest the requested timeframe for annual-report topics. State that the answer uses a fallback and preserve the requested period.
+7. Quarterly results are not in either search index and must be retrieved directly.
+8. Answer only from retrieved evidence and follow the system citation rules. If evidence remains weak, stale, or absent, state what is missing and the periods searched.
+
+## Cross-Company Thematic Screens
+
+Use this workflow for questions that ask which companies have exposure to a theme, product, geography, customer type, end market, capability, or value chain, especially when the question also contains a structured filter.
+
+1. Define the evidence threshold before searching:
+   - **Direct operating exposure:** the company says it develops, manufactures, sells, services, owns operating assets for, or earns business from the requested theme.
+   - **Announced or planned exposure:** the company discloses a project, investment, capacity plan, or intended entry that is not yet operating.
+   - **Adjacent ecosystem exposure:** the company supplies, uses, distributes, or enables something related without disclosing a direct operating business in it.
+   - A passing market observation, customer mention, risk statement, peer reference, or generic aspiration is incidental and does not make the company a candidate.
+2. Build a short synonym set from the analyst's concept and likely filing-native terms. This is query planning, not a permanent theme dictionary.
+3. Search across companies without resolving names first. Use semantic search for business involvement and strategy, and one keyword search for the theme and its strongest source-native synonyms. Prefer latest annual reports for structural exposure and latest investor presentations for current products, capabilities, and projects.
+4. Read each result as evidence, not as a match. Keep a ticker only when the text supports one of the three exposure levels; discard incidental mentions and deduplicate companies.
+5. Read `references/datasets/company-data.md`, then query all validated tickers in one SQL call and apply current P/E, price, market-cap, classification, or other company-data conditions there. For a requested reported financial metric, use its structured-data Reference instead. Never build the candidate set from adjacent classifications or company-name fragments.
+6. Return only candidates that pass both the evidence threshold and every structured filter. Put direct operating exposure in the primary table; show supported planned and adjacent candidates separately. Follow the system citation rules for every exposure claim and state that valuation and market fields are current snapshots.
+7. Call the result an **evidence-backed shortlist**, not an exhaustive screen: filing search retrieves supported matches but does not prove that no other listed company has the exposure.
+8. If filing evidence is absent or incomplete, follow the system web fallback. Keep press-supported candidates separate, name and date the publication, and never promote an uncited article list into company-specific exposure claims.
 
 ## Tools
 
@@ -31,7 +51,7 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
 - Useful for: exact phrases, named line items, proper nouns, quoted terms, specific metric wording, validating whether a filing mentions a term, or any query where keyword retrieval may find better evidence.
 - Query syntax: backed by PostgreSQL web-search style full-text search, so the query can use natural language plus boolean-style operators such as `OR`, `AND`, negation with `-term`, and quoted phrases like `"margin expansion"`.
 - Supported filing types: `earnings-transcript`, `annual-report`, `investor-presentation`.
-- Output: JSON response containing matched page/chunk text plus filing, company, citation title, `citation_link`, and screenshot links when available. When screenshot links are present, especially for `investor-presentation`, prioritize downloading and analyzing screenshots as primary page-level evidence (as they often contain critical visual tables and charts) and use text as fallback.
+- Output: JSON response containing matched page/chunk text plus filing, company, citation title, `citation_link`, and `page_screenshot_link` when available. A page that has an image arrives already read from that image, so its text is a table rather than a jumble of figures; use it as it comes and do not reconstruct a figure it does not state.
 
 Keyword-search tips:
 
@@ -48,7 +68,7 @@ Keyword-search tips:
 - Earnings transcript: guidance, management outlook, segment explanations, and analyst Q&A.
 - Annual report: long-term strategy, business model, risks, audited narrative, and market positioning.
 - Investor presentation: KPIs, segment/geographic mix, expansion plans, charts, and operating metrics; use keyword search because presentations are not in semantic search.
-- Quarterly result/XBRL: use `screen_financial_statements` for supported exact values and `get_filing_content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
+- Quarterly result/XBRL: follow `screen-financial-metrics.md` and use `query_structured_financial_data` for supported exact values; use `get_filing_content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
 
 ## Breakdown and Mix Questions
 
@@ -109,7 +129,8 @@ Latest filings for all companies and filing types:
 
 ```json
 {
-  "query": "margin outlook"
+  "query": "margin outlook",
+  "filters": null
 }
 ```
 
@@ -184,6 +205,6 @@ Specific quarters for one company:
 
 - Do not use model memory for factual claims.
 - Construct payloads from the MCP tool schema for every query.
-- Cite every material claim inline.
-- Use `citation_link` as the primary citation URL. Include available filing metadata such as document type, year/quarter/date, and company.
+- Follow the system citation rules for every material claim.
+- Never output `citation_link` directly or invent another citation format.
 - If conflicting or insufficient evidence, say insufficient data and what is missing.

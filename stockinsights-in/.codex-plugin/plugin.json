@@ -1,7 +1,7 @@
 {
   "name": "stockinsights-in",
   "version": "0.1.0",
-  "description": "stockinsights.ai India equity research plugin with MCP access to Indian filings, announcements, and search tools.",
+  "description": "stockinsights.ai India equity research plugin with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
   "author": {
     "name": "stockinsights.ai",
     "email": "sahas@stockinsights.ai",
@@ -25,7 +25,7 @@
   "interface": {
     "displayName": "stockinsights.ai India",
     "shortDescription": "Indian equity research with stockinsights.ai MCP",
-    "longDescription": "Bring stockinsights.ai India data into Codex with MCP access to Indian public-company filings, corporate announcements, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
+    "longDescription": "Bring stockinsights.ai India data into Codex with MCP access to Indian company resolution and screening, filing search and page retrieval, standardized financial statements, shareholding, corporate announcements, and results dates for evidence-backed equity research workflows.",
     "developerName": "stockinsights.ai",
     "category": "Research",
     "capabilities": [

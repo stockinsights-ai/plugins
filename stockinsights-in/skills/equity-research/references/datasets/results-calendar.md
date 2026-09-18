@@ -25,7 +25,7 @@ Use only the `stockinsights-in` MCP server. If the tool is unavailable, report t
 
 ## Input Guidance
 
-Pass confirmed plain or exchange-qualified tickers as the tool's comma-separated `ticker` input. Omit `ticker` for the latest market-wide calendar.
+Pass confirmed plain tickers, without exchange prefixes, as the tool's comma-separated `ticker` input, for example `"TCS,INFY"`. Omit `ticker` for the latest market-wide calendar.
 
 Do not invent date, period, page, or limit inputs that are not exposed by the current MCP schema.
 

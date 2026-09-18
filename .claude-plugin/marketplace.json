@@ -9,7 +9,7 @@
     {
       "name": "stockinsights-in",
       "source": "./stockinsights-in",
-      "description": "stockinsights.ai India equity research with MCP access to Indian filings, announcements, and search tools.",
+      "description": "stockinsights.ai India equity research with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
       "version": "0.1.0",
       "author": {
         "name": "stockinsights.ai",

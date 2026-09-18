@@ -1,7 +1,7 @@
 {
   "name": "stockinsights-in",
   "version": "0.1.0",
-  "description": "stockinsights.ai India equity research plugin with MCP access to Indian filings, announcements, and search tools.",
+  "description": "stockinsights.ai India equity research plugin with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
   "author": {
     "name": "stockinsights.ai",
     "email": "sahas@stockinsights.ai",

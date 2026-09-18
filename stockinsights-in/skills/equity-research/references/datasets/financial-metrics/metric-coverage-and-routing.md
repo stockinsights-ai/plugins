@@ -17,7 +17,7 @@ Use period selection for labels such as latest quarter, preceding quarter, prece
 - Revenue/profit/EPS/debt/asset growth, historical averages/medians, ROE, ROA, asset turnover, financial leverage, and cash-quality ratios.
 - Loan-to-deposit and other bank funding-mix ratios.
 
-Derived values are post-fetch calculations, not valid MCP filter, output, or sort keys.
+Derived values may be calculated in guarded SQL CTEs and used as output, filter, or sort expressions when every row uses the same definition, period, and valid inputs.
 
 ## Conditional or Definition-Sensitive
 
@@ -34,7 +34,7 @@ Do not derive:
 - Gross block, accumulated depreciation, CWIP, investments, lease liabilities, contingent liabilities, trade receivables/payables, customer advances, or preference capital.
 - Complete Piotroski score, export percentage, expected/forecast metrics, result dates, or credit ratings.
 
-Use filing search, following `../../references/datasets/filings-search.md`, for company-reported operational or disclosure metrics.
+Use filing search, following `references/datasets/filings-search.md`, for company-reported operational or disclosure metrics.
 
 ## Outside Statement-Only Scope
 
@@ -44,4 +44,4 @@ Do not calculate or route through the financial-statement metrics data source:
 - Volume, DMA, RSI, MACD, highs/lows, or other technical indicators.
 - Promoter/public/FII/DII holdings, pledges, shareholder count, SME status, or changes in ownership.
 
-Use the company-data source, following `../../references/datasets/company-data.md`, only for the market and valuation fields it supports. Do not manufacture unsupported market, ownership, forecast, or technical data.
+Use the company-data source, following `references/datasets/company-data.md`, only for the market and valuation fields it supports. Do not manufacture unsupported market, ownership, forecast, or technical data.

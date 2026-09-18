@@ -3,7 +3,7 @@
     "stockinsights-in": {
       "type": "http",
       "url": "https://api-in.stockinsights.ai/mcp",
-      "note": "stockinsights.ai India MCP server. Uses OAuth on first connection. Provides access to Indian public-company filings search, semantic search, corporate announcements, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
+      "note": "stockinsights.ai India MCP server. Uses OAuth on first connection. Provides read-only access to listed Indian companies: company resolution and screening, filing search and page retrieval, standardized financial statements, shareholding, corporate announcements, and results dates. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
     }
   }
 }
