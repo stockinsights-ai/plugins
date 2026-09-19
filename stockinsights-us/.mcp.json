@@ -2,7 +2,7 @@
   "mcpServers": {
     "stockinsights-us": {
       "type": "http",
-      "url": "https://stockinsights-ai-us-feat-mcp-e21e62f.zuplo.app/mcp",
+      "url": "https://api-us.stockinsights.ai/mcp",
       "note": "stockinsights.ai US MCP server. Uses OAuth on first connection. Provides access to US public-company filings search, semantic search, company documents, and AI insight summaries. Requires the production MCP endpoint to be deployed at this URL or this URL to be updated before publishing."
     }
   }

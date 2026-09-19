@@ -1,7 +1,7 @@
 {
   "name": "stockinsights-us",
   "version": "0.1.0",
-  "description": "stockinsights.ai US equity research plugin with MCP access to SEC filings, company documents, and search tools.",
+  "description": "stockinsights.ai US equity research plugin with MCP access to US company profiles and peers, SEC filing search and reading, earnings-call transcripts, reported financial statements, and corporate disclosures.",
   "author": {
     "name": "stockinsights.ai",
     "email": "sahas@stockinsights.ai",
@@ -18,6 +18,8 @@
     "filings",
     "earnings",
     "financial-data",
+    "financial-statements",
+    "announcements",
     "mcp"
   ],
   "skills": "./skills/",
@@ -25,7 +27,7 @@
   "interface": {
     "displayName": "stockinsights.ai US",
     "shortDescription": "US equity research with stockinsights.ai MCP",
-    "longDescription": "Bring stockinsights.ai US data into Codex with MCP access to US public-company filings, company documents, AI insight summaries, semantic search, and keyword search for evidence-backed equity research workflows.",
+    "longDescription": "Bring stockinsights.ai US data into Codex with MCP access to US company resolution, profiles and peers, SEC filing search and chunk retrieval (10-K, 10-Q, 20-F, earnings-call transcripts), reported financial statements, and 8-K/6-K corporate disclosures for evidence-backed equity research workflows.",
     "developerName": "stockinsights.ai",
     "category": "Research",
     "capabilities": [
@@ -38,7 +40,7 @@
     "defaultPrompt": [
       "Research AAPL using stockinsights.ai US MCP",
       "Search MSFT filings for AI capex",
-      "Summarize recent NVDA filings"
+      "Show TSLA diluted EPS over the last 3 fiscal years"
     ],
     "brandColor": "#0F766E",
     "composerIcon": "./assets/stockinsights-small.svg",

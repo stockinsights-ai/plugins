@@ -7,9 +7,9 @@ description: Verify the stockinsights.ai US MCP connection and OAuth setup befor
 
 Walk the user through verifying their stockinsights.ai US plugin setup. Be concise and practical.
 
-## Step 1: Verify Codex
+## Step 1: Verify the Host
 
-Confirm Codex is running. If the user is seeing this skill, Codex is available.
+Confirm the host (Claude Code or Codex) has the plugin installed. If the user is seeing this skill, it is.
 
 ## Step 2: Check MCP Configuration
 
@@ -21,17 +21,17 @@ Read `.mcp.json` if available and confirm:
 - Auth: OAuth on first connection
 - MCP URL: the `url` value in `.mcp.json`
 
-If the MCP server is unavailable, tell the user to verify `.mcp.json` and restart Codex after plugin installation.
+If the MCP server is unavailable, tell the user to verify `.mcp.json` and restart the host after plugin installation.
 
 ## Step 3: Verify MCP Connection
 
-Run a quick test by calling the US MCP tool `get_announcements_feed`.
+Run a quick test by calling the US MCP tool `resolve_companies` for a well-known ticker such as `AAPL`.
 
 Show the user whether the tool returned data. If OAuth is required, ask the user to complete the browser-based stockinsights.ai authorization flow. If it returns data, tell them setup is working. If it fails, report the error and suggest checking:
 
 - The stockinsights.ai OAuth flow completed successfully
 - The configured MCP URL is reachable
-- Codex has been restarted after plugin installation
+- The host has been restarted after plugin installation
 
 ## Step 4: Suggested First Queries
 
@@ -39,4 +39,4 @@ Suggest one or two follow-up prompts:
 
 - Research AAPL using stockinsights.ai US MCP.
 - Search MSFT filings for AI capex.
-- Summarize recent NVDA filings.
+- Show TSLA diluted EPS over the last 3 fiscal years.
