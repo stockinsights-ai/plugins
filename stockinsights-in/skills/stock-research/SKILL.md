@@ -1,5 +1,5 @@
 ---
-name: equity-research
+name: stock-research
 description: >-
   This skill should be used for any question about Indian listed companies or
   NSE/BSE stocks answered with stockinsights.ai data, such as "what was TCS's
@@ -24,19 +24,19 @@ Answer questions about Indian listed companies with grounded evidence from the `
 
 Choose one primary source before the first MCP call. Read only the reference for that route, plus any fallback it documents. Do not call several tools to discover which one works.
 
-| Question is about | Read | Primary tool |
-| --- | --- | --- |
-| Statement metrics: revenue, profit, expenses, debt, assets, cash flow, EPS, statement-derived ratios, segment revenue | `references/datasets/screen-financial-metrics.md` | `query_structured_financial_data` |
-| Market and valuation fields: market cap, price, 52-week range, PE, sector, industry, peers, simple screens | `references/datasets/company-data.md` | `filter_companies`, or `query_structured_financial_data` for joins |
-| Shareholding: promoter/FII/DII/public mix, named holders, ownership changes | `references/datasets/shareholding-pattern.md` | `query_structured_financial_data` |
-| Recent filings, filing availability, publication dates | `references/datasets/filings-list.md` | `list_filings` |
-| Operational or company-defined KPIs: order book, capacity, utilisation, ARPU, volumes, management-defined segment/product/geographic mix | `references/datasets/filings-search.md` | `search_filings` with `search_method: "keyword"` on the latest investor presentation |
-| Guidance, outlook, management commentary, analyst Q&A | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest earnings transcript |
-| Strategy, business model, long-term risks, cross-company themes | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest annual report |
-| Exact phrases, named projects/products, proper nouns, source-native metric labels | `references/datasets/filings-search.md` | `search_filings` with `search_method: "keyword"` |
-| Recent events: contracts, acquisitions, expansions, regulatory actions, management changes, dividends, rating changes | `references/datasets/announcement-feed.md` | `get_announcements` |
-| Full summary, detailed analysis, or section extraction from exactly one identified filing | `references/datasets/filing-content.md` | `get_filing_content` |
-| Upcoming or latest results dates | `references/datasets/results-calendar.md` | `get_results_calendar` |
+| Question is about                                                                                                                        | Read                                              | Primary tool                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Statement metrics: revenue, profit, expenses, debt, assets, cash flow, EPS, statement-derived ratios, segment revenue                    | `references/datasets/screen-financial-metrics.md` | `query_structured_financial_data`                                                    |
+| Market and valuation fields: market cap, price, 52-week range, PE, sector, industry, peers, simple screens                               | `references/datasets/company-data.md`             | `filter_companies`, or `query_structured_financial_data` for joins                   |
+| Shareholding: promoter/FII/DII/public mix, named holders, ownership changes                                                              | `references/datasets/shareholding-pattern.md`     | `query_structured_financial_data`                                                    |
+| Recent filings, filing availability, publication dates                                                                                   | `references/datasets/filings-list.md`             | `list_filings`                                                                       |
+| Operational or company-defined KPIs: order book, capacity, utilisation, ARPU, volumes, management-defined segment/product/geographic mix | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "keyword"` on the latest investor presentation |
+| Guidance, outlook, management commentary, analyst Q&A                                                                                    | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "semantic"` on the latest earnings transcript  |
+| Strategy, business model, long-term risks, cross-company themes                                                                          | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "semantic"` on the latest annual report        |
+| Exact phrases, named projects/products, proper nouns, source-native metric labels                                                        | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "keyword"`                                     |
+| Recent events: contracts, acquisitions, expansions, regulatory actions, management changes, dividends, rating changes                    | `references/datasets/announcement-feed.md`        | `get_announcements`                                                                  |
+| Full summary, detailed analysis, or section extraction from exactly one identified filing                                                | `references/datasets/filing-content.md`           | `get_filing_content`                                                                 |
+| Upcoming or latest results dates                                                                                                         | `references/datasets/results-calendar.md`         | `get_results_calendar`                                                               |
 
 Routing rules:
 

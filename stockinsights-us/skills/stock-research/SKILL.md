@@ -1,5 +1,5 @@
 ---
-name: equity-research
+name: stock-research
 description: >-
   This skill should be used for any question about US listed companies or
   NYSE/Nasdaq stocks answered with stockinsights.ai data, such as "what was
@@ -23,16 +23,16 @@ Answer questions about US listed companies with grounded evidence from the `stoc
 
 Choose one primary source before the first MCP call. Read only the reference for that route, plus any fallback it documents. Do not call several tools to discover which one works.
 
-| Question is about | Read | Primary tool |
-| --- | --- | --- |
-| Identity, profiles, industry, peers, stored market-cap snapshot | `references/datasets/company-data.md` | `resolve_companies`, then `query_structured_financial_data` |
-| Reported financial facts: revenue, earnings, EPS, expenses, assets, debt, cash flow, derived growth and ratios | `references/datasets/financial-statements.md` | `query_structured_financial_data` |
-| Recent filings, filing availability, publication dates | `references/datasets/filings-list.md` | `list_filings` |
-| Guidance, outlook, management commentary, analyst Q&A | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest earnings transcript |
-| Strategy, business model, risk factors, cross-company themes | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest 10-K or 20-F |
-| Exact phrases, named products or programs, proper nouns, company-defined KPIs, source-native line items | `references/datasets/filings-search.md` | `search_filings` with `search_method: "keyword"` |
-| Full summary, detailed analysis, or section extraction from exactly one identified filing | `references/datasets/filing-content.md` | `get_filing_content` |
-| Dated disclosures and events: 8-K/6-K items, management changes, acquisitions, contracts, dividends, rating changes | `references/datasets/announcement-feed.md` | `get_announcements` |
+| Question is about                                                                                                   | Read                                          | Primary tool                                                                        |
+| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Identity, profiles, industry, peers, stored market-cap snapshot                                                     | `references/datasets/company-data.md`         | `resolve_companies`, then `query_structured_financial_data`                         |
+| Reported financial facts: revenue, earnings, EPS, expenses, assets, debt, cash flow, derived growth and ratios      | `references/datasets/financial-statements.md` | `query_structured_financial_data`                                                   |
+| Recent filings, filing availability, publication dates                                                              | `references/datasets/filings-list.md`         | `list_filings`                                                                      |
+| Guidance, outlook, management commentary, analyst Q&A                                                               | `references/datasets/filings-search.md`       | `search_filings` with `search_method: "semantic"` on the latest earnings transcript |
+| Strategy, business model, risk factors, cross-company themes                                                        | `references/datasets/filings-search.md`       | `search_filings` with `search_method: "semantic"` on the latest 10-K or 20-F        |
+| Exact phrases, named products or programs, proper nouns, company-defined KPIs, source-native line items             | `references/datasets/filings-search.md`       | `search_filings` with `search_method: "keyword"`                                    |
+| Full summary, detailed analysis, or section extraction from exactly one identified filing                           | `references/datasets/filing-content.md`       | `get_filing_content`                                                                |
+| Dated disclosures and events: 8-K/6-K items, management changes, acquisitions, contracts, dividends, rating changes | `references/datasets/announcement-feed.md`    | `get_announcements`                                                                 |
 
 Routing rules:
 
