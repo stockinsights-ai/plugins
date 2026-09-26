@@ -27,9 +27,10 @@ Choose one primary source before the first MCP call. Read only the reference for
 | --- | --- | --- |
 | Identity, profiles, industry, peers, stored market-cap snapshot | `references/datasets/company-data.md` | `resolve_companies`, then `query_structured_financial_data` |
 | Reported financial facts: revenue, earnings, EPS, expenses, assets, debt, cash flow, derived growth and ratios | `references/datasets/financial-statements.md` | `query_structured_financial_data` |
-| Guidance, outlook, management commentary, analyst Q&A | `references/datasets/filings-search.md` | `search_filings_semantic` on the latest earnings transcript |
-| Strategy, business model, risk factors, cross-company themes | `references/datasets/filings-search.md` | `search_filings_semantic` on the latest 10-K or 20-F |
-| Exact phrases, named products or programs, proper nouns, company-defined KPIs, source-native line items | `references/datasets/filings-search.md` | `search_filings_keyword` |
+| Recent filings, filing availability, publication dates | `references/datasets/filings-list.md` | `list_filings` |
+| Guidance, outlook, management commentary, analyst Q&A | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest earnings transcript |
+| Strategy, business model, risk factors, cross-company themes | `references/datasets/filings-search.md` | `search_filings` with `search_method: "semantic"` on the latest 10-K or 20-F |
+| Exact phrases, named products or programs, proper nouns, company-defined KPIs, source-native line items | `references/datasets/filings-search.md` | `search_filings` with `search_method: "keyword"` |
 | Full summary, detailed analysis, or section extraction from exactly one identified filing | `references/datasets/filing-content.md` | `get_filing_content` |
 | Dated disclosures and events: 8-K/6-K items, management changes, acquisitions, contracts, dividends, rating changes | `references/datasets/announcement-feed.md` | `get_announcements` |
 

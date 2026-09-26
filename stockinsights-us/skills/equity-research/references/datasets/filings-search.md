@@ -2,42 +2,42 @@
 
 ## Choose the evidence
 
-Use `search_filings_semantic` for concepts, strategy and management explanations. Use `search_filings_keyword` for exact wording, named products and line items. Both search `earnings-transcript`, `10-K`, `10-Q`, and `20-F`. Transcripts support management discussion and Q&A; annual filings support business, risks and annual statements; 10-Q supports interim disclosures. These tools do not search an 8-K/6-K announcement feed: use `references/datasets/announcement-feed.md` for that.
+Use `references/datasets/filings-list.md` for recent releases and filing availability. Use `search_filings` with `search_method: "semantic"` for concepts, strategy and management explanations; use `search_method: "keyword"` for exact wording, named products and line items. Search covers `earnings-transcript`, `10-K`, `10-Q`, and `20-F`. Transcripts support management discussion and Q&A; annual filings support business, risks and annual statements; 10-Q supports interim disclosures. Filing search does not cover the 8-K/6-K announcement feed: use `references/datasets/announcement-feed.md` for that.
 
 Route structured statement questions to `references/datasets/financial-statements.md`. Resolve ambiguous names or share classes with `references/datasets/company-data.md` before narrowing the search. US type names are not India's `annual-report` or `investor-presentation`.
 
 ## Request contract
 
-Send `query` and `filters`. Query length is 1–500 characters in the published tool contract. A non-null filter contains `tickers` (1–100 plain symbols, or null for all companies), `filing_criteria` (1–4 criteria), and optional `latest` (defaults to true). Each criterion has `filing_type` and `period`.
+Call `search_filings` with `search_method` (`semantic` or `keyword`) and `query`. Query length is 1–500 characters. A non-null filter contains `tickers` (1–100 plain symbols, or null for all companies), `filing_criteria` (1–4 criteria), and optional `latest` (defaults to true). Each criterion has `filing_type` and `period`.
 
 - Annual historical search: `period: {"calendar_years":["2024"]}`. Use four-digit years, at most 10.
 - Quarterly historical search: `period: {"fiscal_quarters":["FY25Q1"]}`. Use FYxxQy, at most 20.
 - `period: null` uses `latest`. True selects filings marked latest; false searches available history.
 - An explicit period overrides `latest`. Do not send both period field families in one criterion.
-- `filters: null` means latest supported filings across all companies. Do not send empty arrays as a wildcard or drop a requested issuer after a failed resolution.
+- `filters: null` searches the latest supported filings across all companies. Do not send empty arrays as a wildcard or drop a requested issuer after a failed resolution.
 
 Search uses stored filing year/quarter metadata. A year label is not an assertion about the issuer's fiscal start/end dates. Verify the actual period in the document before making financial comparisons. Search `period` and content `time_scope` are different contracts.
 
 ### Latest management discussion
 
-Call `search_filings_semantic`:
+Call `search_filings`:
 
 ```json
-{"query":"robotics humanoid robots management outlook","filters":{"tickers":["TSLA"],"filing_criteria":[{"filing_type":"earnings-transcript","period":null}],"latest":true}}
+{"search_method":"semantic","query":"robotics humanoid robots management outlook","filters":{"tickers":["TSLA"],"filing_criteria":[{"filing_type":"earnings-transcript","period":null}],"latest":true}}
 ```
 
-For exact product wording, call `search_filings_keyword` with a short query such as `"Optimus" OR "humanoid"`. Keyword syntax supports quoted phrases, OR and minus exclusions; ordinary words narrow the match. Avoid stuffing every synonym into one restrictive query.
+For exact product wording, call `search_filings` with `search_method: "keyword"` and a short query such as `"Optimus" OR "humanoid"`. Keyword syntax supports quoted phrases, OR and minus exclusions; ordinary words narrow the match. Avoid stuffing every synonym into one restrictive query.
 
 ### Historical annual disclosure
 
 ```json
-{"query":"customer concentration supply chain risk","filters":{"tickers":["AAPL"],"filing_criteria":[{"filing_type":"10-K","period":{"calendar_years":["2024"]}}],"latest":false}}
+{"search_method":"semantic","query":"customer concentration supply chain risk","filters":{"tickers":["AAPL"],"filing_criteria":[{"filing_type":"10-K","period":{"calendar_years":["2024"]}}],"latest":false}}
 ```
 
 ### Compare specific quarters across years
 
 ```json
-{"query":"gross margin outlook","filters":{"tickers":["MSFT"],"filing_criteria":[{"filing_type":"earnings-transcript","period":{"fiscal_quarters":["FY24Q4"]}},{"filing_type":"earnings-transcript","period":{"fiscal_quarters":["FY25Q1"]}}],"latest":false}}
+{"search_method":"semantic","query":"gross margin outlook","filters":{"tickers":["MSFT"],"filing_criteria":[{"filing_type":"earnings-transcript","period":{"fiscal_quarters":["FY24Q4"]}},{"filing_type":"earnings-transcript","period":{"fiscal_quarters":["FY25Q1"]}}],"latest":false}}
 ```
 
 Keep cross-year pairs in separate criteria (or calls). Within one criterion the backend flattens years and quarters into separate sets: putting FY24Q4 and FY25Q1 together can also match FY24Q1 and FY25Q4. Multiple criteria of the same type remain separate branches and duplicate hits are removed. For more than four distinct branches, split calls.
@@ -56,7 +56,7 @@ Semantic hits additionally expose `chunk` as a positive integer or null. Keyword
 
 ## Research workflow
 
-1. State the company, evidence type and period needed. For “last call,” keep `latest: true` and verify the returned period; do not assume the current calendar quarter has a transcript.
+1. State the company, evidence type and period needed. For a newest-filings question or to identify “last call,” follow `references/datasets/filings-list.md` and verify the returned period. For a passage search, keep `latest: true` and verify its returned period; do not assume the current calendar quarter has a transcript.
 2. When the user named no period, search `latest: true` first, before any historical search. Read the returned `year` and `quarter`: that is the anchor for everything after. Today's date is not evidence a period was filed, and the newest stored filing can sit several quarters behind the calendar.
 3. An empty `latest: true` is not an empty corpus. The latest flag is set per filing type and is not always set: an issuer can hold years of a type while no filing of it is marked latest. When the first pass returns nothing, take the anchor from another supported type for the same issuer, or search history explicitly with `latest: false`. Never read the empty result as no coverage.
 4. Count back from that anchor when the question needs history, such as a trend, a series or a multi-quarter comparison. Never write a `calendar_years` or `fiscal_quarters` list from the current calendar year, or from an assumption about how far back the data runs. A list that omits the anchor period silently answers a different, older question.

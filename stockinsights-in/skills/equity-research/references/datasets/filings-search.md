@@ -11,7 +11,7 @@ Use the tools of the `stockinsights-in` MCP server as the data provider.
    - Guidance, outlook, explanations, and analyst Q&A: semantic search of the latest earnings transcript; use keyword search for an exact phrase or named item.
    - Operational KPIs and management-defined segment, product, or geographic breakdowns: keyword search of the latest investor presentation. Presentations are not in semantic search.
    - Structural strategy, business model, and long-term risks: semantic search of the latest annual report; use search first for an exact phrase or named item.
-3. For broad `which`, `list`, or `find companies` questions, search across companies without resolving candidates first. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
+3. For broad `which` or `find companies` exposure questions, search across companies without resolving candidates first. For filing availability and recent releases, read `references/datasets/filings-list.md`. For a targeted company question, resolve only ambiguous identities and add ticker and period filters.
 4. Use latest filings by default. Use an explicit requested period exactly.
 5. Stop when the primary retrieval is sufficient. If it is incomplete, try the other search mode when that filing type supports it, then retrieve the identified filing with `get_filing_content`.
 6. If the primary filing is absent or still incomplete, use the relevant alternate company filing: presentation for transcript guidance, transcript for presentation KPIs, or the filing nearest the requested timeframe for annual-report topics. State that the answer uses a fallback and preserve the requested period.
@@ -37,7 +37,7 @@ Use this workflow for questions that ask which companies have exposure to a them
 
 ## Tools
 
-### `search_filings_semantic`
+### `search_filings` with `search_method: "semantic"`
 
 - Purpose: vector/embedding search across company filing chunks.
 - Useful for: strategy, management commentary, risk discussion, outlook, business model, capex plans, competitive positioning, qualitative KPI drivers, or any query where semantic retrieval may find better evidence.
@@ -45,7 +45,7 @@ Use this workflow for questions that ask which companies have exposure to a them
 - Output: JSON response containing relevant chunks plus filing, company, citation title, and `citation_link`.
 - Query syntax: use one natural semantic phrase containing the relevant concepts and synonyms. Do not use quotes, `OR`, `AND`, exclusions, or other web-search operators.
 
-### `search_filings_keyword`
+### `search_filings` with `search_method: "keyword"`
 
 - Purpose: keyword/full-text search across filing text.
 - Useful for: exact phrases, named line items, proper nouns, quoted terms, specific metric wording, validating whether a filing mentions a term, or any query where keyword retrieval may find better evidence.
@@ -83,10 +83,11 @@ For segment, geographic, product, or revenue-mix questions:
 
 ## Input contract
 
-Both tools use this request shape:
+`search_filings` uses this request shape for either method:
 
 ```json
 {
+  "search_method": "semantic",
   "query": "search text",
   "filters": {
     "tickers": ["TCS"],
@@ -102,7 +103,7 @@ Both tools use this request shape:
 }
 ```
 
-- `query` is required.
+- `search_method` (`semantic` or `keyword`) and `query` are required. Query length is 1–500 characters.
 - `filters` may be omitted or set to `null` to search latest filings for all companies and all supported filing types.
 - `filters.tickers` may be omitted or set to `null` to search all companies. Use plain tickers like `TCS`, `INFY`, `RELIANCE`.
 - `filters.filing_criteria` may be omitted or set to `null`; the API defaults to searching latest filings only for every supported filing type.
@@ -125,10 +126,11 @@ Period fields:
 
 Examples:
 
-Latest filings for all companies and filing types:
+Search the latest filing passages across companies and searchable filing types:
 
 ```json
 {
+  "search_method": "semantic",
   "query": "margin outlook",
   "filters": null
 }
@@ -138,6 +140,7 @@ All historical annual reports:
 
 ```json
 {
+  "search_method": "semantic",
   "query": "capital allocation",
   "filters": {
     "filing_criteria": [
@@ -154,6 +157,7 @@ Specific quarters for one company:
 
 ```json
 {
+  "search_method": "semantic",
   "query": "deal wins and demand environment",
   "filters": {
     "tickers": ["TCS"],

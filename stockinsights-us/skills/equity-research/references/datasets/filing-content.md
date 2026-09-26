@@ -4,10 +4,10 @@
 
 Use `get_filing_content` to read part of one US `earnings-transcript`, `10-K`, `10-Q`, or `20-F`. US filings are addressed by chunk, never by PDF page number.
 
-Prefer a search hit's `filing_id` as `document_id`, together with its exact `filing_type`. Do not add `ticker` or `time_scope` to this selector: a later filing must not replace the source you are checking. Example template (replace the placeholder with an actual returned ID):
+Prefer a listing or search hit's `filing_id` as `document_id`, together with its exact `filing_type`. Do not add `ticker` or `time_scope` to this selector: a later filing must not replace the source you are checking. Example template (replace the placeholder with an actual returned ID):
 
 ```json
-{"document_id":"<filing_id from search>","filing_type":"10-K","chunk_selection":{"mode":"range","start_chunk":4,"end_chunk":8}}
+{"document_id":"<filing_id from listing or search>","filing_type":"10-K","chunk_selection":{"mode":"range","start_chunk":4,"end_chunk":8}}
 ```
 
 When no document is identified, use `ticker` plus `time_scope`:
