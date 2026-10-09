@@ -1,5 +1,5 @@
 {
-  "name": "stockinsights-in",
+  "name": "stockinsights-india-plugin",
   "version": "0.1.0",
   "description": "stockinsights.ai India equity research plugin with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
   "author": {
@@ -23,15 +23,12 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "stockinsights.ai India",
-    "shortDescription": "Indian equity research with stockinsights.ai MCP",
-    "longDescription": "Bring stockinsights.ai India data into Codex with MCP access to Indian company resolution and screening, filing search and page retrieval, standardized financial statements, shareholding, corporate announcements, and results dates for evidence-backed equity research workflows.",
+    "displayName": "stockinsights.ai - India",
+    "shortDescription": "Public market research",
+    "longDescription": "Research public Indian companies with stockinsights.ai datasets. Provide your ChatGPT/Codex access to company profiles, current market data, financial statements, segment revenue, shareholding patterns, annual reports, quarterly results, earnings-call transcripts, investor presentations, corporate announcements, and results dates. Screen and rank companies by industry, market cap, P/E, growth, profitability, debt, or cash flow; compare peers and trace findings to source data and filings. A stockinsights.ai account is required.",
     "developerName": "stockinsights.ai",
     "category": "Research",
-    "capabilities": [
-      "Interactive",
-      "Read"
-    ],
+    "capabilities": ["Interactive", "Read"],
     "websiteURL": "https://www.stockinsights.ai",
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
     "termsOfServiceURL": "https://www.stockinsights.ai/terms",

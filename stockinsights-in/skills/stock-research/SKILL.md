@@ -1,17 +1,16 @@
 ---
 name: stock-research
-description: >-
-  This skill should be used for any question about Indian listed companies or
-  NSE/BSE stocks answered with stockinsights.ai data, such as "what was TCS's
-  revenue last quarter", "show Reliance's debt trend", "which mid-cap pharma
-  companies have the highest ROE", "compare HDFC Bank and ICICI Bank margins",
-  "what did Infosys management say about deal wins", "latest announcements for
-  Tata Motors", "who are the top shareholders of Zomato", "when are Wipro's
-  results", or "find companies talking about capacity expansion". Covers
-  financial statements and ratios, valuation and market data, screening and
-  peers, shareholding, filings, earnings calls, annual reports, investor
-  presentations, corporate announcements, and results dates, including
-  follow-up questions.
+description:
+  Research NSE and BSE listed public Indian stocks with authentic financial and filing datasets from stockinsights.ai. Use when
+  a user wants to understand a public company's performance, valuation, ownership,
+  strategy, risks, or recent developments; compare peers; discover or screen
+  companies by financial or business criteria; or investigate management
+  commentary, company disclosures, and results dates.
+  Use for queries on financial statements and ratios, current market and valuation data,
+  company screening and peers, shareholding, and company-reported operational
+  metrics. Also for questions that need to be answered by searching filings such as
+  annual reports, quarterly results, investor presentations, earnings calls and announcements.
+
 metadata:
   version: "0.1.0"
 ---
