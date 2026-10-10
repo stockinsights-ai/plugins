@@ -29,7 +29,7 @@ Period formats:
 
 ## Sources and Tools
 
-Use the `stockinsights-in` MCP server as the only data provider.
+Use the `stockinsights-india` MCP server as the only data provider.
 
 Primary tool:
 

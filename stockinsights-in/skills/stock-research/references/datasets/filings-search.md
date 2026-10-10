@@ -2,7 +2,7 @@
 
 ## MCP Server
 
-Use the tools of the `stockinsights-in` MCP server as the data provider.
+Use the tools of the `stockinsights-india` MCP server as the data provider.
 
 ## Workflow
 
@@ -68,7 +68,7 @@ Keyword-search tips:
 - Earnings transcript: guidance, management outlook, segment explanations, and analyst Q&A.
 - Annual report: long-term strategy, business model, risks, audited narrative, and market positioning.
 - Investor presentation: KPIs, segment/geographic mix, expansion plans, charts, and operating metrics; use keyword search because presentations are not in semantic search.
-- Quarterly result/XBRL: follow `screen-financial-metrics.md` and use `query_structured_financial_data` for supported exact values; use `get_filing_content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
+- Quarterly result/XBRL: follow `screen-financial-metrics.md` and use `run_structured_financial_query` for supported exact values; use `get_filing_content` for source artifacts or page-level context. Never retry semantic or keyword search to find a quarterly result.
 
 ## Breakdown and Mix Questions
 

@@ -6,24 +6,21 @@ Use this dataset to analyse disclosed Indian-company ownership snapshots, headli
 ownership mix, and named holder rows. The data is point-in-time: compare the
 same `filing_basis` across `as_of_date` values.
 
-## Source and Tool
+## SQL retrieval
 
-- Market: `in`
-- SQL dialect: PostgreSQL
-- Use read-only SQL with explicit columns, deterministic ordering, and a bounded
-  result size. The toolkit does not support `$1`-style bind placeholders; escape
-  SQL string literals instead.
-
-Use `query_structured_financial_data`. Inspect the relevant tables in one call when a
-required column is uncertain, then run the query:
-
-```json
-{ "body": { "action": "describe_tables", "table_names": ["in_shareholding_filings", "in_shareholding_categories"] } }
-```
-
-```json
-{ "body": { "action": "run_query", "query": "SELECT ... LIMIT 50", "max_rows": 50 } }
-```
+Inspect the needed tables once with `describe_structured_financial_tables`, for
+example `{"body":{"table_names":["in_companies","in_shareholding_filings","in_shareholding_categories"]}}`.
+Then call `run_structured_financial_query` with a read-only PostgreSQL SELECT in
+`body.query` and an explicit `body.max_rows`. The tools have separate input
+schemas; the SQL field is `query`, not `sql`. Confirm columns before using them,
+copy documented category and basis values rather than guessing, and qualify
+tables with `public`. Select relevant columns, escape literals, and include
+deterministic ordering and LIMIT; never use `SELECT *` or unbound placeholders.
+Correct an input rejection once from the tool schema, and use returned SQL
+errors and inspected metadata for repairs. An empty result under unverified
+filters is not evidence that the disclosure is absent; a transport error is
+not an empty result. The tables, joins, and snapshot rules below define which
+records to use.
 
 ## Tables and Relationships
 
@@ -102,8 +99,8 @@ WITH filings AS (
     f.as_of_date,
     f.total_shares,
     f.total_shareholders
-  FROM in_shareholding_filings AS f
-  JOIN in_companies AS c ON c.company_id = f.company_id
+  FROM public.in_shareholding_filings AS f
+  JOIN public.in_companies AS c ON c.company_id = f.company_id
   WHERE c.stock_ticker = 'DRREDDY'
     AND f.is_canonical = true
     AND f.filing_basis = 'periodic'
@@ -130,7 +127,7 @@ SELECT
     WHERE c.category_code = 'non_institutions'
   ) AS public_percentage
 FROM filings AS f
-LEFT JOIN in_shareholding_categories AS c
+LEFT JOIN public.in_shareholding_categories AS c
   ON c.shareholding_filing_id = f.id
 GROUP BY f.id, f.as_of_date, f.total_shares, f.total_shareholders
 ORDER BY f.as_of_date;
@@ -141,8 +138,8 @@ ORDER BY f.as_of_date;
 ```sql
 WITH selected_filing AS (
   SELECT f.id, f.as_of_date
-  FROM in_shareholding_filings AS f
-  JOIN in_companies AS c ON c.company_id = f.company_id
+  FROM public.in_shareholding_filings AS f
+  JOIN public.in_companies AS c ON c.company_id = f.company_id
   WHERE c.stock_ticker = 'DRREDDY'
     AND f.is_canonical = true
     AND f.filing_basis = 'periodic'
@@ -158,7 +155,7 @@ SELECT
   h.shares,
   h.reported_percentage
 FROM selected_filing AS f
-JOIN in_shareholding_holders AS h ON h.shareholding_filing_id = f.id
+JOIN public.in_shareholding_holders AS h ON h.shareholding_filing_id = f.id
 WHERE COALESCE(LOWER(TRIM(h.holder_type)), '') <> 'category'
   AND TRIM(h.holder_name) NOT IN ('', '-', '--', '******')
 ORDER BY h.reported_percentage DESC NULLS LAST, h.shares DESC NULLS LAST, h.holder_name

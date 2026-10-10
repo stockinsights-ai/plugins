@@ -17,11 +17,11 @@ The latest calendar contains company name, ticker, security code, and expected r
 ## Sources and Tools
 
 - Market: `in`
-- MCP server: `stockinsights-in`
+- MCP server: `stockinsights-india`
 - Primary tool: `get_results_calendar`
 - Supporting tool: `resolve_companies` for ambiguous company names
 
-Use only the `stockinsights-in` MCP server. If the tool is unavailable, report the blocker instead of substituting another calendar.
+Use only the `stockinsights-india` MCP server. If the tool is unavailable, report the blocker instead of substituting another calendar.
 
 ## Input Guidance
 
@@ -43,7 +43,7 @@ If the response metadata indicates more rows exist than were returned, state tha
 
 ## Validation Checklist
 
-- Uses `get_results_calendar` from `stockinsights-in`.
+- Uses `get_results_calendar` from `stockinsights-india`.
 - Resolves only ambiguous company identities.
 - Uses one combined ticker request when filtering.
 - Does not claim historical date-range support.

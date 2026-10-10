@@ -7,23 +7,26 @@ Resolve Indian listed-company identities and query structured company profiles, 
 ## Sources and Tools
 
 - Market: `in`
-- Company resolution: `resolve_companies` on the `stockinsights-in` MCP server
-- Simple company screens: `filter_companies` (exact tickers, industry combinations, market-cap categories, price, 52-week, and PE ranges)
-- Other company queries: `query_structured_financial_data` against `public.in_companies`
+- Company resolution: `resolve_companies` on the `stockinsights-india` MCP server
+- Company queries: `run_structured_financial_query` against `public.in_companies`.
 - SQL dialect: PostgreSQL
 - Default result limit: 50 rows, unless the analyst requests a smaller or specific count
 
-Use `resolve_companies` only for identity resolution. Use `filter_companies` when a screen needs only its supported filters and sort fields. Use `query_structured_financial_data` for every other lookup, filter, sort, screen, or peer query against company data, and whenever company attributes must be joined to financial-statement tables.
+Use `resolve_companies` only for identity resolution. Use `run_structured_financial_query` for every lookup, filter, sort, screen, or peer query against company data.
 
-For every SQL-backed company query:
-
-1. Inspect the table once: `{ "body": { "action": "describe_tables", "table_names": ["in_companies"] } }`.
-2. Generate and double-check one read-only query using only confirmed columns.
-3. Execute: `{ "body": { "action": "run_query", "query": "SELECT ... LIMIT 50", "max_rows": 50 } }`. Use `query`, not `sql`; omitted `max_rows` defaults to 100.
-
-Never inspect the same table twice, run test queries, or search another data source for tool documentation. Correct an input-shape rejection once; after a second rejection, stop and report an internal tool-input failure.
-
-Never use `SELECT *`, DML, DDL, or parameter placeholders. Escape string literals, select only relevant columns, add deterministic ordering, and include `LIMIT`. Use only returned SQL data in the answer.
+Before SQL, inspect the relevant tables once with
+`describe_structured_financial_tables`, for example
+`{"body":{"table_names":["in_companies"]}}`. Then call
+`run_structured_financial_query` with a read-only PostgreSQL SELECT in
+`body.query` and an explicit `body.max_rows`, for example
+`{"body":{"query":"SELECT company_id, company_name, stock_ticker FROM public.in_companies WHERE stock_ticker = 'TCS' ORDER BY company_id LIMIT 5","max_rows":5}}`.
+Use `query`, not `sql`; the tools have separate input schemas. Select only
+confirmed columns, use qualified `public` table names, escape literals, and
+include deterministic ordering and LIMIT. Never use `SELECT *` or unbound
+placeholders. Correct an input rejection once from the tool schema; use SQL
+error details and inspected metadata to repair a query. A transport error is
+not an empty result, and an empty result under unverified filters is not proof
+that the company is absent.
 
 ## Company Resolution
 
@@ -41,26 +44,26 @@ Do not resolve obvious tickers or use resolution to discover a broad sector, ind
 
 Confirm the live schema before querying. Commonly relevant columns are:
 
-| Column | Meaning |
-|---|---|
-| `company_id` | Stable internal company identifier and the join key for other datasets. |
-| `company_name` | Company display name. |
-| `company_website` | Company website URL. |
-| `stock_ticker` | Primary plain Indian stock ticker, such as `TCS` or `RELIANCE`. |
-| `isin` | International Securities Identification Number. |
-| `bse_id`, `bse_ticker`, `nse_id` | Exchange-specific identifiers and tickers. |
-| `marketcap` | Current market capitalization in **INR crore**. |
-| `marketcap_category` | Stored size bucket: exactly `large`, `mid`, `small`, `micro`, or `nano`. |
-| `current_price` | Current share price in INR. |
-| `high_52w`, `low_52w` | Current 52-week high and low prices in INR. |
-| `pe_ratio` | Current price-to-earnings ratio; a plain ratio. |
-| `industry_macro` | Broadest industry classification. |
-| `industry_sector` | Sector within the macro classification. |
-| `industry` | Industry within the sector. |
-| `industry_basic` | Most specific industry classification. |
-| `company_info` | JSON metadata such as currency and location. |
-| `company_links` | JSON collection of company-related links. |
-| `previous_tickers` | JSON history of former ticker symbols. |
+| Column                           | Meaning                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------ |
+| `company_id`                     | Stable internal company identifier and the join key for other datasets.  |
+| `company_name`                   | Company display name.                                                    |
+| `company_website`                | Company website URL.                                                     |
+| `stock_ticker`                   | Primary plain Indian stock ticker, such as `TCS` or `RELIANCE`.          |
+| `isin`                           | International Securities Identification Number.                          |
+| `bse_id`, `bse_ticker`, `nse_id` | Exchange-specific identifiers and tickers.                               |
+| `marketcap`                      | Current market capitalization in **INR crore**.                          |
+| `marketcap_category`             | Stored size bucket: exactly `large`, `mid`, `small`, `micro`, or `nano`. |
+| `current_price`                  | Current share price in INR.                                              |
+| `high_52w`, `low_52w`            | Current 52-week high and low prices in INR.                              |
+| `pe_ratio`                       | Current price-to-earnings ratio; a plain ratio.                          |
+| `industry_macro`                 | Broadest industry classification.                                        |
+| `industry_sector`                | Sector within the macro classification.                                  |
+| `industry`                       | Industry within the sector.                                              |
+| `industry_basic`                 | Most specific industry classification.                                   |
+| `company_info`                   | JSON metadata such as currency and location.                             |
+| `company_links`                  | JSON collection of company-related links.                                |
+| `previous_tickers`               | JSON history of former ticker symbols.                                   |
 
 Market cap, price fields, PE, and 52-week values are current snapshots, not historical values; do not attach a historical fiscal period to them.
 

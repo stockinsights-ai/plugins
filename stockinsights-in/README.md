@@ -4,13 +4,13 @@ Evidence-backed equity research on Indian listed companies, powered by the stock
 
 ## Setup
 
-Install the plugin. On first use, the `stockinsights-in` MCP server (`https://api-in.stockinsights.ai/mcp`) opens a browser window for stockinsights.ai sign-in (OAuth). If tools are unavailable later, re-authorise the connector.
+Install the plugin. On first use, the `stockinsights-india` MCP server (`https://api-in.stockinsights.ai/mcp`) opens a browser window for stockinsights.ai sign-in (OAuth). If tools are unavailable later, re-authorise the connector.
 
 ## Skills
 
 | Skill | Use |
 | --- | --- |
-| `equity-research` | Answers questions about Indian listed companies. It covers financial statements and ratios, valuation and market data, screening and peers, shareholding, filings and earnings calls, corporate announcements, and results dates. Every figure is cited to its source. |
+| `stock-research` | Answers questions about Indian listed companies. It covers financial statements and ratios, valuation and market data, screening and peers, shareholding, filings and earnings calls, corporate announcements, and results dates. Reported figures include their source period and units; filing claims include available source links. |
 
 The skill triggers automatically on questions such as:
 

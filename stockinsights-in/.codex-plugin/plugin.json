@@ -27,10 +27,14 @@
     "shortDescription": "Public market research",
     "longDescription": "Research public Indian companies with stockinsights.ai datasets. Provide your ChatGPT/Codex access to company profiles, current market data, financial statements, segment revenue, shareholding patterns, annual reports, quarterly results, earnings-call transcripts, investor presentations, corporate announcements, and results dates. Screen and rank companies by industry, market cap, P/E, growth, profitability, debt, or cash flow; compare peers and trace findings to source data and filings. A stockinsights.ai account is required.",
     "developerName": "stockinsights.ai",
-    "category": "Research",
-    "capabilities": ["Interactive", "Read"],
+    "category": "Finance",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
     "websiteURL": "https://www.stockinsights.ai",
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
+    "supportURL": "https://www.stockinsights.ai/contact-us",
     "termsOfServiceURL": "https://www.stockinsights.ai/terms",
     "defaultPrompt": [
       "What did Infosys say about demand in its last earnings call?",
@@ -41,5 +45,66 @@
     "composerIcon": "./assets/stockinsights-small.svg",
     "logo": "./assets/stockinsights.png",
     "screenshots": []
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Analyze a company's reported financial trend",
+              "prompt": "How have TCS revenue and net profit changed over the last eight reported quarters?",
+              "tools_triggered": "describe_structured_financial_tables, run_structured_financial_query",
+              "expected_behavior": "Query TCS's quarterly income-statement data for eight reported quarters. Show the periods, revenue and net profit with units, describe the trend using only returned figures, and state the source periods and units without inventing citation links. Do not fill missing quarters with estimates."
+            },
+            {
+              "description": "Screen and rank companies by a financial ratio",
+              "prompt": "Which mid-cap pharma companies have the highest ROE in the latest available annual results?",
+              "tools_triggered": "describe_structured_financial_tables, run_structured_financial_query",
+              "expected_behavior": "Use the supported mid-cap and pharma classifications, calculate ROE consistently from the latest available annual statements, and rank matching companies. Show the period and ROE definition, identify any differing latest periods, and avoid invented citation links."
+            },
+            {
+              "description": "Find management commentary in an earnings call",
+              "prompt": "What did Infosys management say about deal wins in its latest earnings call?",
+              "tools_triggered": "search_filings",
+              "expected_behavior": "Search the latest Infosys earnings-call transcript for deal-win commentary. Summarize only statements supported by the returned excerpts and cite the transcript and period."
+            },
+            {
+              "description": "Find recent corporate announcements",
+              "prompt": "Show contract award announcements from LT in the last three months.",
+              "tools_triggered": "get_announcements",
+              "expected_behavior": "Filter LT announcements to Contract Awards in the requested three-month window. Return the matching announcements with dates and source links, or say clearly if none were returned."
+            },
+            {
+              "description": "Combine ownership research with the results calendar",
+              "prompt": "What is TCS's latest promoter, FII and DII shareholding, and when are its next results expected?",
+              "tools_triggered": "describe_structured_financial_tables, run_structured_financial_query, get_results_calendar",
+              "expected_behavior": "Use the latest canonical periodic shareholding filing for TCS and the results calendar. Report the ownership observation date and percentages, then the returned expected results date, with source details and available filing citations. If no future date is returned, say so without inventing one."
+            }
+          ],
+          "negative": [
+            {
+              "description": "A US-listed company is outside the Indian-company scope; explain the limit without calling stockinsights.ai tools.",
+              "prompt": "Analyze Apple's latest quarterly revenue using stockinsights.ai India."
+            },
+            {
+              "description": "The plugin cannot place trades; explain that no order can be placed without calling stockinsights.ai tools.",
+              "prompt": "Buy 100 shares of TCS for me now."
+            },
+            {
+              "description": "Historical daily prices are unavailable; explain the data limit without calling stockinsights.ai tools or inventing a price series.",
+              "prompt": "Plot TCS's daily closing price for the past five years using stockinsights.ai India."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin provides read-only equity research and does not process purchases or payments."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Initial release of stockinsights.ai India research with company screening, financial statements, shareholding analysis, filing search, corporate announcements, results dates, and guided setup."
+      }
+    }
   }
 }

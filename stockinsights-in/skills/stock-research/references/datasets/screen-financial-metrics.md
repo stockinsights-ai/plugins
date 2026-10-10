@@ -10,17 +10,41 @@ Use `filings-search` for absent company-defined KPIs such as order book, capacit
 
 - Market: `in`
 - SQL dialect: PostgreSQL
-- Tool: `query_structured_financial_data`
+- Tools: `describe_structured_financial_tables` and `run_structured_financial_query` on the `stockinsights-india` MCP server
 - Default result limit: 50 rows unless the analyst requests otherwise.
 
-This reference selects `query_structured_financial_data` as the primary source; do not substitute another source before querying it. Use these payload shapes in order:
+Use the structured financial tools as the primary source before considering the
+filing fallback. Use only returned data in the answer.
 
-1. Inspect every relevant table in one call: `{ "body": { "action": "describe_tables", "table_names": ["in_companies", "in_xbrl_income_statements"] } }`. Never inspect the same table twice.
-2. Execute: `{ "body": { "action": "run_query", "query": "SELECT ... LIMIT 50", "max_rows": 50 } }`. Use `query`, not `sql`; omitted `max_rows` defaults to 100.
+Inspect every relevant table once with `describe_structured_financial_tables`,
+for example
+`{"body":{"table_names":["in_companies","in_xbrl_income_statements"]}}`.
+Then call `run_structured_financial_query` with a read-only PostgreSQL SELECT
+in `body.query` and an explicit `body.max_rows`, for example
+`{"body":{"query":"SELECT company_id, company_name, stock_ticker FROM public.in_companies WHERE stock_ticker = 'TCS' ORDER BY company_id LIMIT 5","max_rows":5}}`.
+The tools have separate input schemas; use `query`, not `sql`. Select only
+confirmed columns, qualify tables with `public`, escape literals, and include
+deterministic ordering and LIMIT. Never use `SELECT *` or unbound placeholders.
+Correct an input rejection once from the tool schema; repair SQL errors from
+their details and inspected metadata. A transport error is not an empty result.
+An empty result under unverified predicates does not establish missing data:
+check each predicate against the documented codes or a narrow query of actual
+stored values before falling back to filings.
 
-Double-check SQL. Correct one input-shape rejection from these examples; after a second, stop and report an internal tool-input failure. Retry an API SQL error only when its details identify the query problem. Never search filings for tool documentation.
+Do not guess column names, `metric_code`, or categorical filter values such as
+`reporting_type`, `statement_scope`, and `metric_group`. Copy metric codes from
+the catalogue below; use table inspection for columns. For undocumented values,
+inspect only the relevant distinct values in a bounded query. Do not substitute
+a display label for a stored code.
 
-Use read-only SQL, escaped literals, explicit columns, and no `$1` placeholders. Answer only from returned data.
+For quarterly income comparisons, use `reporting_type = 'quarterly'` and
+`LOWER(TRIM(statement_scope)) = 'consolidated'`. Rank distinct fiscal periods
+per company before selecting the requested number of quarters. Within each
+company-period, select one filing and company-level fact per metric using
+`xbrl_filing_id`, `is_total`, and `component_key` as specified below. If facts
+still differ, inspect their dimensions; never choose the largest value or
+absolute value to decide which row is consolidated. Do not label a result
+consolidated unless the query actually constrained `statement_scope`.
 
 ## Primary-Source Fallback
 
@@ -32,13 +56,13 @@ If SQL fails because of an input or query error, follow its correction rules bef
 
 All tables are in `public`.
 
-| Table                          | Use                                              |
-| ------------------------------ | ------------------------------------------------ |
-| `in_companies`                 | Identity, industry, and current market snapshot. |
-| `in_xbrl_income_statements`    | Income-statement flows and disclosed ratios.     |
-| `in_xbrl_balance_sheets`       | Point-in-time balance-sheet metrics.             |
-| `in_xbrl_cash_flow_statements` | Cash-flow metrics.                               |
-| `in_xbrl_segment_revenues`     | Business/geographical segment financial facts.   |
+| Table | Use |
+| --- | --- |
+| `in_companies` | Identity, industry, and current market snapshot. |
+| `in_xbrl_income_statements` | Income-statement flows and disclosed ratios. |
+| `in_xbrl_balance_sheets` | Point-in-time balance-sheet metrics. |
+| `in_xbrl_cash_flow_statements` | Cash-flow metrics. |
+| `in_xbrl_segment_revenues` | Business/geographical segment financial facts. |
 
 Join XBRL tables on `in_companies.company_id`. Its ticker column is `stock_ticker`, never `ticker`. Reduce each fact table to one row per company-period before joining; raw fact-to-fact joins multiply rows.
 
@@ -46,7 +70,12 @@ Join XBRL tables on `in_companies.company_id`. Its ticker column is `stock_ticke
 
 The XBRL tables share `xbrl_filing_id`, `company_id`, period fields, `reporting_type`, `statement_scope`, `audit_status`, `metric_group`, `metric_code`, `component_key`, `is_total`, `value`, and `unit`.
 
-Select practical latest filings with `MAX(xbrl_filing_id)` by company and period, then join the id back before pivoting. Never use `MAX(value)` across filings.
+Select practical latest filings with `MAX(xbrl_filing_id)` by company, period,
+`reporting_type`, and `statement_scope`, then join the id back before pivoting.
+Match fact rows on filing id, company, fiscal period, `reporting_type`, and
+`statement_scope`; the filing id alone does not establish a fact's granularity
+or scope. Never use `MAX(value)` across filings or distinct facts to choose a
+result.
 
 For company-level totals, normally require:
 
@@ -59,12 +88,12 @@ Follow `company-data.md` for `in_companies` and peer universes; its market cap, 
 
 ## Metric Catalog
 
-XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore. Do not scale EPS, face value, ratios, or percentages; check `unit` and `metric_group` when uncertain. Preserve fallback-code priority with `COALESCE(MAX(value) FILTER (...), ...)`; never sum alternatives.
+XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore. Do not scale EPS, face value, ratios, or percentages; check `unit` and `metric_group` when uncertain. Preserve fallback-code priority with `COALESCE(MAX(value) FILTER (...), ...)` only after reducing each metric code to one fact from the selected filing; never sum alternatives or use `MAX(value)` to resolve duplicate facts. If a code still has multiple values after the full filing and dimension filters, inspect them rather than using `DISTINCT ON` with metric-code priority alone.
 
 ### Income statement codes
 
 | Metric | `metric_code` priority |
-|---|---|
+| --- | --- |
 | Revenue | `revenue_from_operations`, then `income` |
 | Total income | `income` |
 | Other income | `other_income` |
@@ -80,8 +109,8 @@ XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore.
 | Net profit | `profit_loss_for_period`, `profit_loss_for_the_period`, `profit_loss_for_period_from_continuing_operations`, then `profit_loss_for_the_period_from_continuing_operations` |
 | Net profit attributable to owners | `profit_or_loss_attributable_to_owners_of_parent` |
 | Comprehensive income | `comprehensive_income_for_the_period` |
-| Basic EPS | `basic_earnings_loss_per_share_from_continuing_and_discontinued_operations`, `basic_earnings_loss_per_share_from_continuing_operations`, then `basic_earnings_per_share_after_extraordinary_items` |
-| Diluted EPS | `diluted_earnings_loss_per_share_from_continuing_and_discontinued_operations`, `diluted_earnings_loss_per_share_from_continuing_operations`, then `diluted_earnings_per_share_after_extraordinary_items` |
+| Basic EPS | `basic_earnings_loss_per_share_from_continuing_and_discontinued_operations`, `basic_earnings_loss_per_share_from_continuing_operations`, then `basic_earnings_per_share` |
+| Diluted EPS | `diluted_earnings_loss_per_share_from_continuing_and_discontinued_operations`, `diluted_earnings_loss_per_share_from_continuing_operations`, then `diluted_earnings_per_share` |
 | Face value | `face_value_of_equity_share_capital` |
 | Disclosed debt/equity | `debt_equity_ratio` |
 | Disclosed interest coverage | `interest_service_coverage_ratio` |
@@ -92,7 +121,7 @@ XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore.
 ### Balance-sheet codes
 
 | Metric | `metric_code` priority |
-|---|---|
+| --- | --- |
 | Total assets | `assets` |
 | Total equity | `equity` |
 | Equity share capital | `equity_share_capital`, then `capital` |
@@ -111,7 +140,7 @@ XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore.
 ### Cash-flow codes
 
 | Metric | `metric_code` |
-|---|---|
+| --- | --- |
 | Cash from operations | `cash_flows_from_used_in_operating_activities` |
 | Cash from investing | `cash_flows_from_used_in_investing_activities` |
 | Cash from financing | `cash_flows_from_used_in_financing_activities` |
@@ -122,7 +151,7 @@ XBRL amounts are stored in INR. Divide amount facts by `10000000` for INR crore.
 `in_xbrl_segment_revenues` stores business or geographical facts, not company totals.
 
 | Measure | Common `metric_code` |
-|---|---|
+| --- | --- |
 | Revenue | `segment_revenue`, `segment_revenue_from_operations` |
 | Inter-segment revenue | `inter_segment_revenue` |
 | Profit | `segment_profit_loss_before_tax_and_finance_costs`, `segment_profit_before_tax` |
@@ -198,5 +227,5 @@ Calculated metrics may be filtered, sorted, and ranked in an outer SQL query whe
 - Balance-sheet values are point-in-time; never sum them across quarters. Flow granularities are not interchangeable.
 - Cash-flow coverage is strongest for annual and half-year periods.
 - Bank/NBFC metrics and balance-sheet economics differ from industrial companies; use the banking reference and avoid industrial liquidity formulas for banks.
-- `MAX(xbrl_filing_id)` is a latest-filing approximation because the SQL catalog does not expose integrated filing metadata.
+- `MAX(xbrl_filing_id)` is a latest-filing approximation because the external SQL catalog does not expose integrated filing metadata.
 - Current price, market cap, PE, and 52-week range are available in `in_companies`; historical market prices and valuation history are not.

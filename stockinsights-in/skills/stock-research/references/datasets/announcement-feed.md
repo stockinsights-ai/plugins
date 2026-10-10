@@ -31,7 +31,7 @@ Common announcement use cases include:
 
 ## Sources and Tools
 
-Use the `stockinsights-in` MCP server as the only data provider.
+Use the `stockinsights-india` MCP server as the only data provider.
 
 Primary tool:
 
@@ -138,7 +138,7 @@ The current request schema exposes `limit` but no `page` or cursor. If `meta.tot
 
 ## Web Fallback
 
-Web search is a host tool, not part of the `stockinsights-in` MCP server. Use it only when the host provides it and only for press reporting; never use it for financial figures. If it is unavailable, say that press coverage was not checked.
+Web search is a host tool, not part of the `stockinsights-india` MCP server. Use it only when the host provides it and only for press reporting; never use it for financial figures. If it is unavailable, say that press coverage was not checked.
 
 An empty result is not a blocker: the tool worked and the company disclosed nothing, which does not end the retrieval.
 
