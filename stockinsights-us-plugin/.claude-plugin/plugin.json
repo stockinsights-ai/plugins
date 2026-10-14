@@ -26,5 +26,8 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "icon": "./assets/stockinsights.png",
-  "privacyPolicyUrl": "https://www.stockinsights.ai/privacy"
+  "privacyPolicyUrl": "https://www.stockinsights.ai/privacy",
+  "supportUrl": "https://www.stockinsights.ai/contact-us",
+  "termsOfServiceUrl": "https://www.stockinsights.ai/terms",
+  "documentationUrl": "https://docs.stockinsights.ai/plugins/overview"
 }

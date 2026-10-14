@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "stockinsights-india": {
+    "stockinsights.ai - India": {
       "type": "http",
       "url": "https://api-in.stockinsights.ai/mcp"
     }
