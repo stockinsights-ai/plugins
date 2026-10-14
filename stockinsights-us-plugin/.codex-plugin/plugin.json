@@ -1,5 +1,5 @@
 {
-  "name": "stockinsights-us",
+  "name": "stockinsights-us-plugin",
   "version": "0.1.0",
   "description": "stockinsights.ai US equity research plugin with MCP access to US company profiles and peers, SEC filing search and reading, earnings-call transcripts, reported financial statements, and corporate disclosures.",
   "author": {
@@ -30,10 +30,7 @@
     "longDescription": "Research US-listed public companies with stockinsights.ai datasets. Give ChatGPT/Codex access to company profiles and peers, reported financial statements from 10-K, 10-Q and 20-F filings, SEC filing search and reading, earnings-call transcripts, and 8-K/6-K corporate disclosures. Rank and compare companies on reported financials, search filings for management commentary and risk factors, and trace findings to source filings. A stockinsights.ai account is required.",
     "developerName": "stockinsights.ai",
     "category": "Finance",
-    "capabilities": [
-      "Interactive",
-      "Read"
-    ],
+    "capabilities": ["Interactive", "Read"],
     "websiteURL": "https://www.stockinsights.ai",
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
     "supportURL": "https://www.stockinsights.ai/contact-us",

@@ -1,5 +1,5 @@
 {
-  "name": "stockinsights-us",
+  "name": "stockinsights-us-plugin",
   "displayName": "stockinsights.ai - US",
   "version": "0.1.0",
   "description": "stockinsights.ai US equity research plugin with MCP access to US company profiles and peers, SEC filing search and reading, earnings-call transcripts, reported financial statements, and corporate disclosures.",
