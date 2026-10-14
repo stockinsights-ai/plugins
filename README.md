@@ -23,7 +23,7 @@ Then install the region you need:
 
 ```text
 # India
-/plugin install stockinsights-in@stockinsights-ai
+/plugin install stockinsights-india-plugin@stockinsights-ai
 
 # US
 /plugin install stockinsights-us@stockinsights-ai
@@ -43,7 +43,7 @@ Then install the region you need:
 
 ```bash
 # India
-codex plugin install stockinsights-in
+codex plugin install stockinsights-india-plugin
 
 # US
 codex plugin install stockinsights-us
@@ -72,7 +72,7 @@ The setup skill verifies the agent is running, checks the MCP configuration, con
 
 | Plugin             | Region | MCP test tool            | Example                                       |
 | ------------------ | ------ | ------------------------ | --------------------------------------------- |
-| `stockinsights-in` | India  | `get_announcement_feed`  | Research TCS using stockinsights.ai India MCP |
+| `stockinsights-india-plugin` | India  | `get_announcement_feed`  | Research TCS using stockinsights.ai India MCP |
 | `stockinsights-us` | US     | `get_announcements_feed` | Research AAPL using stockinsights.ai US MCP   |
 
 ## Data Sources
