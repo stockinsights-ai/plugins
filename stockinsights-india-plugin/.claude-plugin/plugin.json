@@ -1,5 +1,6 @@
 {
   "name": "stockinsights-india-plugin",
+  "displayName": "stockinsights.ai - India",
   "version": "0.1.0",
   "description": "stockinsights.ai India equity research plugin with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
   "author": {
@@ -21,26 +22,5 @@
     "mcp"
   ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
-  "interface": {
-    "displayName": "stockinsights.ai - India",
-    "shortDescription": "Public market research",
-    "longDescription": "Research public Indian companies with stockinsights.ai datasets. Provide your ChatGPT/Codex access to company profiles, current market data, financial statements, segment revenue, shareholding patterns, annual reports, quarterly results, earnings-call transcripts, investor presentations, corporate announcements, and results dates. Screen and rank companies by industry, market cap, P/E, growth, profitability, debt, or cash flow; compare peers and trace findings to source data and filings. A stockinsights.ai account is required.",
-    "developerName": "stockinsights.ai",
-    "category": "Finance",
-    "capabilities": ["Interactive", "Read"],
-    "websiteURL": "https://www.stockinsights.ai",
-    "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
-    "supportURL": "https://www.stockinsights.ai/contact-us",
-    "termsOfServiceURL": "https://www.stockinsights.ai/terms",
-    "defaultPrompt": [
-      "What did Infosys say about demand in its last earnings call?",
-      "Compare the financial statements of Swiggy and Zomato over past 4 quarters",
-      "Companies who recently announced contract wins?"
-    ],
-    "brandColor": "#0F766E",
-    "composerIcon": "./assets/stockinsights-small.svg",
-    "logo": "./assets/stockinsights.png",
-    "screenshots": []
-  }
+  "mcpServers": "./.mcp.json"
 }

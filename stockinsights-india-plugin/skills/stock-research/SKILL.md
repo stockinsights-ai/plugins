@@ -1,15 +1,8 @@
 ---
 name: stock-research
 description:
-  Research NSE and BSE listed public Indian stocks with authentic financial and filing datasets from stockinsights.ai. Use when
-  a user wants to understand a public company's performance, valuation, ownership,
-  strategy, risks, or recent developments; compare peers; discover or screen
-  companies by financial or business criteria; or investigate management
-  commentary, company disclosures, and results dates.
-  Use for queries on financial statements and ratios, current market and valuation data,
-  company screening and peers, shareholding, and company-reported operational
-  metrics. Also for questions that need to be answered by searching filings such as
-  annual reports, quarterly results, investor presentations, earnings calls and announcements.
+  Research NSE and BSE listed public Indian stocks with authentic financial and filing datasets from stockinsights.ai. Use the skill when the user asks queries regarding a public company's performance, valuation, ownership, strategy, risks, or recent developments; compare peers; discover or screen companies by financial or business criteria; or investigate management commentary, company disclosures, and results dates.
+  Use for queries on financial statements such as income, balance sheet and cashflow statements and their metrics, ratios, current market and valuation data, company screening and peers, shareholding, and company-reported operational metrics. Also for questions that need to be answered by searching filings such as annual reports, quarterly results, investor presentations, earnings calls and corporate announcements. Discover companies that match specific financial or business criteria. Search across filings and extract required information.
 
 metadata:
   version: "0.1.0"
@@ -21,13 +14,13 @@ Answer questions about Indian listed companies with grounded evidence from the `
 
 ## Route Before Retrieving
 
-Choose one primary source before the first MCP call. Read its reference before using that source, and follow its conditional definition and fallback references. Do not call several tools to discover which one works.
+Choose the primary dataset for given query. Read its reference before using that source, and follow its conditional definition and fallback references. Do not start immediately calling several MCP tools to discover which one works.
 
-| Question is about                                                                                                                        | Read                                              | Primary tool                                                                         |
+| Question is about                                                                                                                        | Dataset References                                | Primary tool                                                                         |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Statement metrics: revenue, profit, expenses, debt, assets, cash flow, EPS, statement-derived ratios, segment revenue                    | `references/datasets/screen-financial-metrics.md` | `describe_structured_financial_tables` and `run_structured_financial_query`                                                    |
-| Market and valuation fields: market cap, price, 52-week range, PE, sector, industry, peers, simple screens                               | `references/datasets/company-data.md`             | `describe_structured_financial_tables` and `run_structured_financial_query`                   |
-| Shareholding: promoter/FII/DII/public mix, named holders, ownership changes                                                              | `references/datasets/shareholding-pattern.md`     | `describe_structured_financial_tables` and `run_structured_financial_query`                                                    |
+| Statement metrics: revenue, profit, expenses, debt, assets, cash flow, EPS, statement-derived ratios, segment revenue                    | `references/datasets/screen-financial-metrics.md` | `describe_structured_financial_tables` and `run_structured_financial_query`          |
+| Market and valuation fields: market cap, price, 52-week range, PE, sector, industry, peers, simple screens                               | `references/datasets/company-data.md`             | `describe_structured_financial_tables` and `run_structured_financial_query`          |
+| Shareholding: promoter/FII/DII/public mix, named holders, ownership changes                                                              | `references/datasets/shareholding-pattern.md`     | `describe_structured_financial_tables` and `run_structured_financial_query`          |
 | Recent filings, filing availability, publication dates                                                                                   | `references/datasets/filings-list.md`             | `list_filings`                                                                       |
 | Operational or company-defined KPIs: order book, capacity, utilisation, ARPU, volumes, management-defined segment/product/geographic mix | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "keyword"` on the latest investor presentation |
 | Guidance, outlook, management commentary, analyst Q&A                                                                                    | `references/datasets/filings-search.md`           | `search_filings` with `search_method: "semantic"` on the latest earnings transcript  |
@@ -67,7 +60,10 @@ Investor presentations are searchable only by keyword. Quarterly results are not
 
 ## Periods
 
-- If the user specifies a period, use exactly that period. Indian fiscal years run April–March; `FY26Q1` is April–June 2025.
+- Indian fiscal years run April–March; `FY27Q1` is April–June 2026, `FY27Q2` is July-Sept 2026, `FY27Q3` is Oct-Dec 2026, `FY27Q4` is Jan-Mar 2027. `FY27` is April 2026 - March 2027. H1 FY27 is April-Sept 2026, H2 FY27 is Oct 2026 - Mar 2027.
+- If the user specifies a period, use exactly that period.
+- Note that some companies might not have released the earning results yet for a given quarter, so the latest available reported period may not be the most recent quarter. Also, the quarter's earnings are reported after the completion of the quarter. Example: FY27Q2 earnings can be reported after Sep 30 2026.
+- Also, few companies release earnings half yearly too.
 - If the user asks for the latest data or gives no period, select the latest available reported period using the chosen tool.
 - Never convert today's date into an explicit filing period. The calendar does not prove a filing exists; let the data source choose the latest reported period.
 - If a requested period is unavailable, say so. Do not substitute another period, a consolidated value, or a proxy unless the user asks for it.
@@ -84,6 +80,7 @@ Investor presentations are searchable only by keyword. Quarterly results are not
 
 - Cover only Indian listed companies. For companies listed elsewhere, say the connector does not cover them.
 - Do not give buy, sell, or hold recommendations or personalised investment advice. Present the evidence and leave the judgement to the user.
+- Historical price datasets is not available.
 
 ## Response
 

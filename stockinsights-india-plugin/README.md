@@ -4,6 +4,10 @@ Evidence-backed equity research on Indian listed companies, powered by the stock
 
 ## Setup
 
+```
+/plugin install stockinsights-india-plugin --marketplace stockinsights-ai/plugins
+```
+
 Install the plugin. On first use, the `stockinsights-india` MCP server (`https://api-in.stockinsights.ai/mcp`) opens a browser window for stockinsights.ai sign-in (OAuth). If tools are unavailable later, re-authorise the connector.
 
 ## Skills
@@ -27,3 +31,18 @@ The skill triggers automatically on questions such as:
 - Earnings-call transcripts, annual reports, investor presentations, and quarterly results
 - Corporate announcements
 - Results calendar
+
+## Data and privacy
+
+The plugin runs no local code and bundles no scripts or binaries. It contains skill instructions and one remote MCP server, `stockinsights-india` (`https://api-in.stockinsights.ai/mcp`, HTTPS). Your research queries (company names, filters, and search text) are sent to that server to retrieve data, and results are returned to Claude. Authentication is OAuth in the browser; the plugin never asks for or stores credentials, and no API keys are read from your environment. A stockinsights.ai account is required. The plugin is read-only and does not place trades or orders.
+
+Outputs are research aids, not investment advice.
+
+## Support and legal
+
+- Website: https://www.stockinsights.ai
+- Support: https://www.stockinsights.ai/contact-us
+- Privacy policy: https://www.stockinsights.ai/privacy
+- Terms of service: https://www.stockinsights.ai/terms
+- Source: https://github.com/stockinsights-ai/plugins
+- License: MIT (see `LICENSE`)

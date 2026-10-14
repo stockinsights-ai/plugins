@@ -7,8 +7,8 @@
   "description": "stockinsights.ai plugins for equity research in Claude Code.",
   "plugins": [
     {
-      "name": "stockinsights-in",
-      "source": "./stockinsights-in",
+      "name": "stockinsights-india-plugin",
+      "source": "./stockinsights-india-plugin",
       "description": "stockinsights.ai India equity research with MCP access to Indian company screening, filings, financial statements, shareholding, announcements, and results dates.",
       "version": "0.1.0",
       "author": {
