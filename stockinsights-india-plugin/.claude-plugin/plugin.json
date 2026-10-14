@@ -22,5 +22,7 @@
     "mcp"
   ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.mcp.json",
+  "icon": "./assets/stockinsights.png",
+  "privacyPolicyUrl": "https://www.stockinsights.ai/privacy"
 }

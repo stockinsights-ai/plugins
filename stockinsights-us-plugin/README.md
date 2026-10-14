@@ -5,7 +5,7 @@ Evidence-backed equity research on US listed companies, powered by the stockinsi
 ## Setup
 
 ```
-/plugin install stockinsights-us --marketplace stockinsights-ai/plugins
+/plugin install stockinsights-us-plugin --marketplace stockinsights-ai/plugins
 ```
 
 Install the plugin. On first use, the `stockinsights-us` MCP server (`https://api-us.stockinsights.ai/mcp`) opens a browser window for stockinsights.ai sign-in (OAuth). If tools are unavailable later, re-authorise the connector.
