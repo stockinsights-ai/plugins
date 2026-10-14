@@ -2,9 +2,9 @@
 
 Read `references/datasets/financial-statements.md` first. Every recipe starts from a resolved issuer's company_id and reaches facts through that issuer's filings. Never use an arbitrary filing to answer a company question.
 
-## Worked sample and adaptation
+## Using the recipes
 
-The literals below are database validation fixtures, not defaults: company_id 'aCkPWrh3F2' is Tesla, Inc. (TSLA), and filing_id '069f8962-be91-7201-8000-2cce3c54c24d' is its 10-K for fiscal 2025. The queries were executed read-only to verify the schema and result shape. Before using a recipe for a user question, replace each literal with the identity established by `references/datasets/company-data.md` and recipe 1, inspect the relevant relation, and verify periods and concepts from that filing. Do not copy a fixture into another company's answer.
+Resolve the issuer through `references/datasets/company-data.md` before using these recipes. Replace `<resolved_company_id>` with the returned company_id, then select a filing from recipe 1 and replace `<selected_filing_id>` with its id. These markers are not SQL parameters: substitute the actual values, escaping embedded single quotes in company_id, before calling `run_structured_financial_query`. Keep the filing_id UUID cast. Inspect the relevant relation and verify periods and concepts from the selected filing.
 
 ### 1. List the issuer's filings that carry facts
 
@@ -15,7 +15,7 @@ FROM (
   UNION ALL
   SELECT id, company_id, form_type, year, quarter, published_date FROM public.us_20f_filing
 ) AS f
-WHERE f.company_id = 'aCkPWrh3F2'
+WHERE f.company_id = '<resolved_company_id>'
   AND EXISTS (SELECT 1 FROM public.us_xbrl_income_statements AS x WHERE x.filing_id = f.id)
 ORDER BY f.published_date DESC, f.id
 LIMIT 8
@@ -29,7 +29,7 @@ Quarterly filings come from us_10q_filing; annual 10-K and 20-F filings come fro
 SELECT report_start_date, report_end_date, reporting_type, unit,
        COUNT(*) AS presentation_rows
 FROM public.us_xbrl_income_statements
-WHERE filing_id = '069f8962-be91-7201-8000-2cce3c54c24d'::uuid
+WHERE filing_id = '<selected_filing_id>'::uuid
   AND is_total = true AND component_key IS NULL
 GROUP BY report_start_date, report_end_date, reporting_type, unit
 ORDER BY report_end_date DESC, report_start_date, reporting_type, unit
@@ -45,7 +45,7 @@ SELECT concept_qname, concept_local_name, label, unit,
        report_html_file_name, row_index, report_start_date,
        report_end_date, reporting_type
 FROM public.us_xbrl_income_statements
-WHERE filing_id = '069f8962-be91-7201-8000-2cce3c54c24d'::uuid
+WHERE filing_id = '<selected_filing_id>'::uuid
   AND is_total = true AND component_key IS NULL
 ORDER BY report_end_date DESC, report_start_date, row_index, id
 LIMIT 50
@@ -55,13 +55,13 @@ A truncated or capped response is a partial concept inventory. Narrow by the req
 
 ### 4. Retrieve an observed concept with provenance
 
-This fixture contains the observed concept us-gaap:EarningsPerShareDiluted with unit USD_PER_SHARE. That observation is not a universal coverage promise.
+The concept below is an example. Check that the selected filing contains it with the requested unit and period; its presence in one filing is not a universal coverage promise.
 
 ```sql
 SELECT filing_id, report_html_file_name, row_index, label, concept_qname,
        report_start_date, report_end_date, reporting_type, unit, value
 FROM public.us_xbrl_income_statements
-WHERE filing_id = '069f8962-be91-7201-8000-2cce3c54c24d'::uuid
+WHERE filing_id = '<selected_filing_id>'::uuid
   AND concept_qname = 'us-gaap:EarningsPerShareDiluted'
   AND unit = 'USD_PER_SHARE'
   AND is_total = true AND component_key IS NULL
@@ -78,7 +78,7 @@ SELECT f.form_type, f.id AS filing_id, f.published_date,
        x.report_start_date, x.report_end_date, x.reporting_type, x.unit, x.value
 FROM public.us_20f_filing AS f
 JOIN public.us_xbrl_income_statements AS x ON x.filing_id = f.id
-WHERE f.company_id = 'aCkPWrh3F2'
+WHERE f.company_id = '<resolved_company_id>'
   AND x.concept_qname = 'us-gaap:EarningsPerShareDiluted'
   AND x.unit = 'USD_PER_SHARE'
   AND x.reporting_type = 'annual'

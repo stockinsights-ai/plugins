@@ -25,26 +25,88 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "stockinsights.ai US",
-    "shortDescription": "US equity research with stockinsights.ai MCP",
-    "longDescription": "Bring stockinsights.ai US data into Codex with MCP access to US company resolution, profiles and peers, SEC filing search and chunk retrieval (10-K, 10-Q, 20-F, earnings-call transcripts), reported financial statements, and 8-K/6-K corporate disclosures for evidence-backed equity research workflows.",
+    "displayName": "stockinsights.ai - US",
+    "shortDescription": "Public market research",
+    "longDescription": "Research US-listed public companies with stockinsights.ai datasets. Give ChatGPT/Codex access to company profiles and peers, reported financial statements from 10-K, 10-Q and 20-F filings, SEC filing search and reading, earnings-call transcripts, and 8-K/6-K corporate disclosures. Rank and compare companies on reported financials, search filings for management commentary and risk factors, and trace findings to source filings. A stockinsights.ai account is required.",
     "developerName": "stockinsights.ai",
-    "category": "Research",
+    "category": "Finance",
     "capabilities": [
       "Interactive",
       "Read"
     ],
     "websiteURL": "https://www.stockinsights.ai",
     "privacyPolicyURL": "https://www.stockinsights.ai/privacy",
+    "supportURL": "https://www.stockinsights.ai/contact-us",
     "termsOfServiceURL": "https://www.stockinsights.ai/terms",
     "defaultPrompt": [
-      "Research AAPL using stockinsights.ai US MCP",
-      "Search MSFT filings for AI capex",
-      "Show TSLA diluted EPS over the last 3 fiscal years"
+      "What did NVIDIA say about data-center demand in its last earnings call?",
+      "Compare Microsoft and Alphabet operating income over the past 4 quarters",
+      "Latest 8-K disclosures for Boeing"
     ],
     "brandColor": "#0F766E",
     "composerIcon": "./assets/stockinsights-small.svg",
     "logo": "./assets/stockinsights.png",
     "screenshots": []
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Analyze a company's reported financial trend",
+              "prompt": "How have Apple's revenue and diluted EPS changed over the last three fiscal years?",
+              "tools_triggered": "resolve_companies, describe_structured_financial_tables, run_structured_financial_query",
+              "expected_behavior": "Query Apple's annual income-statement data for three fiscal years. Show the fiscal periods, revenue and diluted EPS with currency and units, describe the trend using only returned figures, and do not fill missing periods with estimates."
+            },
+            {
+              "description": "Compare companies on a reported metric",
+              "prompt": "Compare Microsoft and Alphabet operating income over the last four reported quarters.",
+              "tools_triggered": "resolve_companies, describe_structured_financial_tables, run_structured_financial_query",
+              "expected_behavior": "Query quarterly operating income for both issuers, show each fiscal period with units, note any differing fiscal calendars, and use only returned figures."
+            },
+            {
+              "description": "Find management commentary in an earnings call",
+              "prompt": "What did NVIDIA management say about data-center demand in its latest earnings call?",
+              "tools_triggered": "search_filings",
+              "expected_behavior": "Search the latest NVIDIA earnings-call transcript for data-center demand commentary. Summarize only statements supported by the returned excerpts and cite the transcript and period."
+            },
+            {
+              "description": "Summarize risk factors from an annual filing",
+              "prompt": "Summarize the main risk factors in Amazon's latest 10-K.",
+              "tools_triggered": "list_filings, search_filings, get_filing_content",
+              "expected_behavior": "Identify Amazon's latest 10-K, retrieve its risk-factor content, and summarize only what the filing text supports, citing the filing and fiscal period."
+            },
+            {
+              "description": "Find recent corporate disclosures",
+              "prompt": "Show Boeing's 8-K announcements from the last three months.",
+              "tools_triggered": "get_announcements",
+              "expected_behavior": "Return Boeing 8-K disclosures in the requested window with dates and source links, or say clearly if none were returned."
+            }
+          ],
+          "negative": [
+            {
+              "description": "An India-listed company is outside the US scope; explain the limit without calling stockinsights.ai tools.",
+              "prompt": "Analyze Infosys's latest quarterly revenue using stockinsights.ai US."
+            },
+            {
+              "description": "The plugin cannot place trades; explain that no order can be placed without calling stockinsights.ai tools.",
+              "prompt": "Buy 100 shares of Apple for me now."
+            },
+            {
+              "description": "Live prices are unavailable; explain the data limit without calling stockinsights.ai tools or inventing a quote.",
+              "prompt": "What is Tesla's stock price right now?"
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin provides read-only equity research and does not process purchases or payments."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Initial release of stockinsights.ai US research with company profiles and peers, reported financial statements, SEC filing search and reading, earnings-call transcripts, 8-K/6-K disclosures, and guided setup."
+      }
+    }
   }
 }

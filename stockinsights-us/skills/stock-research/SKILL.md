@@ -21,12 +21,12 @@ Answer questions about US listed companies with grounded evidence from the `stoc
 
 ## Route Before Retrieving
 
-Choose one primary source before the first MCP call. Read only the reference for that route, plus any fallback it documents. Do not call several tools to discover which one works.
+Choose one primary source before the first MCP call. Read its reference before using that source, and follow its conditional query and fallback references. Do not call several tools to discover which one works.
 
 | Question is about                                                                                                   | Read                                          | Primary tool                                                                        |
 | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Identity, profiles, industry, peers, stored market-cap snapshot                                                     | `references/datasets/company-data.md`         | `resolve_companies`, then `query_structured_financial_data`                         |
-| Reported financial facts: revenue, earnings, EPS, expenses, assets, debt, cash flow, derived growth and ratios      | `references/datasets/financial-statements.md` | `query_structured_financial_data`                                                   |
+| Identity, profiles, industry, peers, stored market-cap snapshot                                                     | `references/datasets/company-data.md`         | `resolve_companies`, then `describe_structured_financial_tables` and `run_structured_financial_query`                         |
+| Reported financial facts: revenue, earnings, EPS, expenses, assets, debt, cash flow, derived growth and ratios      | `references/datasets/financial-statements.md` | `describe_structured_financial_tables` and `run_structured_financial_query`                                                   |
 | Recent filings, filing availability, publication dates                                                              | `references/datasets/filings-list.md`         | `list_filings`                                                                      |
 | Guidance, outlook, management commentary, analyst Q&A                                                               | `references/datasets/filings-search.md`       | `search_filings` with `search_method: "semantic"` on the latest earnings transcript |
 | Strategy, business model, risk factors, cross-company themes                                                        | `references/datasets/filings-search.md`       | `search_filings` with `search_method: "semantic"` on the latest 10-K or 20-F        |
@@ -36,7 +36,7 @@ Choose one primary source before the first MCP call. Read only the reference for
 
 Routing rules:
 
-- Every SQL-backed route (company data and financial statements) also requires `references/datasets/sql-query-toolkit.md`. Read `references/datasets/financial-statement-queries.md` when building statement queries.
+- Before structured SQL, read the routed reference, then inspect the relevant tables. Never guess columns, concepts, or stored filter values. Read `references/datasets/financial-statement-queries.md` when building statement queries.
 - For breakdown, mix, or composition questions (segments, products, geographies), treat the breakdown as the primary intent. Statement facts are as-reported presentation rows and do not promise complete segment disclosure; use filing search when the structured rows do not carry the requested dimension.
 - A question may need two routes, for example a reported metric plus management commentary. Retrieve each part from its own route and combine them in one answer.
 - Call `resolve_companies` when identity or share class is ambiguous, or when SQL needs the issuer's `company_id`. Do not use resolution to discover an industry universe.
@@ -65,7 +65,8 @@ Searchable and readable filing types are `earnings-transcript`, `10-K`, `10-Q`, 
 
 - US issuers use different fiscal calendars, including 52/53-week years. Discover the issuer's reported period from the returned data; do not assume calendar quarters or an April–March year. `FY25Q1` is the issuer's own first fiscal quarter, not January–March.
 - If the user specifies a period, use exactly that period.
-- If the user asks for the latest data or gives no period, use the tool's `latest` mode. Latest means the latest available source, not today's quarter.
+- An issuer may not have reported a given quarter yet, and results are filed after the period ends, so the latest available reported period can lag the most recent calendar quarter. Fiscal Q4 is reported in the 10-K, not a 10-Q.
+- If the user asks for the latest data or gives no period, select the latest available reported period from the chosen source. Latest does not mean today's quarter.
 - Never convert today's date into an explicit filing period. The calendar does not prove a filing exists; let the data source choose the latest reported period, and say when the newest evidence is older than expected.
 - Distinguish quarter, year-to-date, and instant facts. Do not sum cumulative periods or compare three months with six or nine months.
 - If a requested period is unavailable, say so. Do not substitute another period or a proxy unless the user asks for it.
@@ -83,7 +84,7 @@ Searchable and readable filing types are `earnings-transcript`, `10-K`, `10-Q`, 
 ## Scope
 
 - Cover only US-listed companies and SEC filers. For companies listed elsewhere, say the connector does not cover them. Do not substitute India data.
-- No brokerage research, live prices, or US earnings calendar is available. Say so when asked, and do not estimate them.
+- No brokerage research, live or historical prices, or US earnings calendar is available. Say so when asked, and do not estimate them.
 - Do not give buy, sell, or hold recommendations or personalised investment advice. Present the evidence and leave the judgement to the user.
 
 ## Response

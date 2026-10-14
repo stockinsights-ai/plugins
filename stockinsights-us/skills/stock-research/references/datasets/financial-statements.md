@@ -2,7 +2,26 @@
 
 ## Purpose and access boundary
 
-Retrieve reported US facts with their period, concept, unit and filing provenance. Read `references/datasets/sql-query-toolkit.md` before SQL. Read `references/datasets/financial-statement-queries.md` for conditional query recipes. Never copy India's metric codes, company joins or crore conversions.
+Retrieve reported US facts with their period, concept, unit and filing provenance. Read `references/datasets/financial-statement-queries.md` for conditional query recipes. Never copy India's metric codes, company joins or crore conversions.
+
+Inspect every needed relation once with `describe_structured_financial_tables`,
+for example
+`{"body":{"table_names":["us_companies","us_10q_filing","us_xbrl_income_statements"]}}`.
+Then call `run_structured_financial_query` with a read-only PostgreSQL SELECT
+in `body.query` and explicit `body.max_rows`. The tools have separate input
+schemas; use `query`, not `sql`. A complete payload shape is
+`{"body":{"query":"SELECT company_id, company_name, stock_ticker FROM public.us_companies WHERE stock_ticker = 'TSLA' ORDER BY company_id LIMIT 5","max_rows":5}}`;
+use the linked recipes for statement facts. Confirm columns and stored filter
+values before using them. Select relevant columns, qualify tables with
+`public`, escape literals, and include deterministic ordering and LIMIT; never
+use `SELECT *` or unbound placeholders. Normally request at most 50 rows.
+Check row counts, truncation and errors before interpreting results; a bounded
+result is not proof of complete coverage. Correct an input rejection once from
+the tool schema. Repair SQL errors from their details and inspected metadata;
+narrow issuer, filing, period and output for timeouts. An empty result under
+unverified filters does not prove missing facts, and a transport or permission
+error is not an empty result. Preserve numeric strings, period, unit and filing
+provenance; do not invent citation markers for SQL rows.
 
 The curated US catalog exposes `public.us_xbrl_income_statements`, `public.us_xbrl_balance_sheets` and `public.us_xbrl_cash_flow_statements`, and the two filing relations that give their rows an issuer. The fact rows are as-reported presentation rows, not a normalized cross-company metric catalog.
 

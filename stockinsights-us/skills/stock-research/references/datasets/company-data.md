@@ -2,12 +2,29 @@
 
 ## Purpose and retrieval order
 
-Resolve US issuers, retrieve profiles, and construct explicit industry or peer universes. Use `resolve_companies` for identity; use `query_structured_financial_data` for structured filters after reading `references/datasets/sql-query-toolkit.md`. Company resolution is not an industry screen.
+Resolve US issuers, retrieve profiles, and construct explicit industry or peer universes. Use `resolve_companies` for identity and `run_structured_financial_query` for structured filters. Company resolution is not an industry screen.
 
 1. Resolve names or ambiguous symbols. Preserve returned company_id, ticker punctuation and zero-padded CIK; do not construct identifiers or add exchange prefixes.
 2. Confirm the intended issuer/share class. If resolution fails, report missing coverage; never silently widen to all companies.
 3. Inspect `public.us_companies` once before SQL. Query only the fields needed for the question.
 4. For thematic peers, retrieve evidence through `references/datasets/filings-search.md` first, then enrich the resulting issuers. Separate industry membership from demonstrated business exposure.
+
+Inspect relevant tables once with `describe_structured_financial_tables`, for
+example `{"body":{"table_names":["us_companies"]}}`. Then call
+`run_structured_financial_query` with a read-only PostgreSQL SELECT in
+`body.query` and explicit `body.max_rows`, for example
+`{"body":{"query":"SELECT company_id, company_name, stock_ticker FROM public.us_companies WHERE stock_ticker = 'TSLA' ORDER BY company_id LIMIT 5","max_rows":5}}`.
+The tools have separate input schemas; use `query`, not `sql`. Confirm columns
+and stored filter values before using them. Select relevant columns, qualify
+tables with `public`, escape literals, and include deterministic ordering and
+LIMIT; never use `SELECT *` or unbound placeholders. Normally request at most
+50 rows. Check row counts, truncation and errors before interpreting results;
+a bounded result is not proof of complete coverage. Correct an input rejection
+once from the tool schema. Repair SQL errors from their details and inspected
+metadata; narrow predicates and output for timeouts. An empty result under
+unverified filters is not proof the issuer is absent, and a transport or
+permission error is not an empty result. Preserve numeric strings and returned
+provenance; do not invent citation markers for SQL rows.
 
 ## Company master
 
@@ -36,7 +53,8 @@ No current_price, high_52w, low_52w, pe_ratio, industry_macro or industry_basic 
 
 ## Example: resolved issuer profile
 
-After resolving TSLA and confirming the columns, execute this SQL with the `run_query` payload in `references/datasets/sql-query-toolkit.md`:
+After resolving TSLA and confirming the columns, execute this SQL with
+`run_structured_financial_query` using the payload shape above:
 
 ```sql
 SELECT company_id, company_name, stock_ticker, cik, is_delisted,
